@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BODHA | Neural Wisdom. Ancient Soul.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700&family=Inter:wght@300;400;600&family=Noto+Serif+Devanagari:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --gold-glow: rgba(212, 175, 55, 0.4);
+            --bg: #050505;
+            --glass: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --saffron: #FF9933;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; cursor: crosshair; }
+        
+        body { 
+            background: var(--bg); 
+            color: #fff; 
+            font-family: 'Inter', sans-serif; 
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* --- HIGH-END BACKGROUND ANIMATION --- */
+        .cosmic-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: radial-gradient(circle at 50% 50%, #1a1a1a 0%, #050505 100%);
+            z-index: -2;
+        }
+
+        .geometry-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: url('https://www.transparenttextures.com/patterns/sacred-geometry.png');
+            opacity: 0.03; z-index: -1; animation: rotate 120s linear infinite;
+        }
+
+        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+        /* --- NAVIGATION --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 6%; position: fixed; width: 100%; top: 0;
+            backdrop-filter: blur(15px); border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+        }
+
+        .logo { font-family: 'Cinzel Decorative', cursive; font-size: 24px; color: var(--gold); letter-spacing: 4px; text-shadow: 0 0 15px var(--gold-glow); }
+        .nav-links { display: flex; gap: 30px; font-size: 11px; text-transform: uppercase; letter-spacing: 2px; color: #888; }
+        .nav-links span:hover { color: var(--gold); transition: 0.3s; }
+
+        /* --- MAIN INTERFACE --- */
+        main { padding: 120px 6% 60px; display: grid; grid-template-columns: 1fr 1.4fr; gap: 40px; min-height: 100vh; }
+
+        .control-panel { position: sticky; top: 120px; height: fit-content; }
+        
+        .hero-text h1 { font-size: 48px; font-family: 'Cinzel Decorative'; margin-bottom: 10px; background: linear-gradient(to right, #fff, var(--gold)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .hero-text p { color: #888; margin-bottom: 40px; font-weight: 300; max-width: 400px; }
+
+        .glass-input {
+            background: var(--glass); border: 1px solid var(--glass-border);
+            border-radius: 30px; padding: 40px; backdrop-filter: blur(30px);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        textarea {
+            width: 100%; background: transparent; border: none; border-bottom: 1px solid #333;
+            color: #fff; font-size: 18px; padding: 15px 0; margin-bottom: 30px;
+            outline: none; resize: none; transition: 0.3s; font-family: 'Inter';
+        }
+        textarea:focus { border-bottom-color: var(--gold); }
+
+        .invoke-btn {
+            width: 100%; background: var(--gold); color: #000; border: none;
+            padding: 20px; border-radius: 50px; font-weight: 700; font-size: 14px;
+            text-transform: uppercase; letter-spacing: 3px; transition: 0.5s;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.2);
+        }
+        .invoke-btn:hover { transform: scale(1.02); box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4); }
+
+        /* --- OUTPUT VIEWPORT --- */
+        .viewport-container { position: relative; border-radius: 40px; overflow: hidden; border: 1px solid var(--glass-border); background: #000; box-shadow: 0 50px 100px rgba(0,0,0,0.8); }
+        
+        #artDisplay { width: 100%; height: 750px; object-fit: cover; opacity: 0.6; transition: 1s ease-in-out; filter: brightness(0.7); }
+        
+        .wisdom-overlay {
+            position: absolute; bottom: 0; left: 0; width: 100%; padding: 60px;
+            background: linear-gradient(transparent, rgba(0,0,0,0.95) 70%);
+            transform: translateY(20px); opacity: 0; transition: 1s;
+        }
+        .wisdom-overlay.active { transform: translateY(0); opacity: 1; }
+
+        .shloka-devanagari { font-family: 'Noto Serif Devanagari'; font-size: 28px; color: var(--saffron); margin-bottom: 20px; text-shadow: 0 0 20px rgba(255, 153, 51, 0.4); }
+        .interpretation { color: #ccc; font-size: 16px; line-height: 1.8; margin-bottom: 30px; font-weight: 300; }
+
+        .audio-wave { display: flex; align-items: center; gap: 15px; color: var(--gold); font-size: 12px; letter-spacing: 2px; }
+        .dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; animation: pulse 1.5s infinite; }
+
+        @keyframes pulse { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
+
+        /* --- LOADER --- */
+        #loader { 
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            display: none; text-align: center; 
+        }
+        .lotus-loader { width: 80px; height: 80px; border: 2px solid var(--gold); border-radius: 50% 0 50% 0; animation: bloom 2s infinite ease-in-out; }
+        @keyframes bloom { 0%, 100% { transform: rotate(0deg) scale(1); } 50% { transform: rotate(180deg) scale(1.2); } }
+
+        @media (max-width: 1000px) {
+            main { grid-template-columns: 1fr; }
+            .control-panel { position: relative; top: 0; }
+            #artDisplay { height: 500px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="cosmic-bg"></div>
+<div class="geometry-overlay"></div>
+
+<nav>
+    <div class="logo">BODHA</div>
+    <div class="nav-links">
+        <span>Gita</span>
+        <span>Vedas</span>
+        <span>Upanishads</span>
+        <span style="color: var(--gold); border: 1px solid var(--gold); padding: 5px 15px; border-radius: 20px;">Support Mission</span>
+    </div>
+</nav>
+
+<main>
+    <section class="control-panel">
+        <div class="hero-text">
+            <h1>Neural Wisdom.</h1>
+            <p>Access the core of Sanatana Dharma through high-fidelity AI synthesis.</p>
+        </div>
+
+        <div class="glass-input">
+            <label style="font-size: 10px; letter-spacing: 3px; color: var(--gold); display: block; margin-bottom: 10px;">INTENTION (SANKALPA)</label>
+            <textarea id="userInput" placeholder="Ask about Karma, Purpose, or a specific Verse..."></textarea>
+            
+            <button class="invoke-btn" onclick="awaken()">✦ Awaken Intelligence</button>
+            
+            <div style="margin-top: 40px; display: grid; grid-template-columns: 1fr 1fr; gap: 15px;">
+                <div style="font-size: 10px; color: #555; border-left: 1px solid var(--gold); padding-left: 10px;">
+                    <b>SATTVA ENGINE V5.0</b><br>Global Vedic Standards
+                </div>
+                <div style="font-size: 10px; color: #555; border-left: 1px solid var(--gold); padding-left: 10px;">
+                    <b>AUTHENTIC SOURCE</b><br>Gita & Upanishadic Logic
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="viewport-container">
+        <div id="loader">
+            <div class="lotus-loader"></div>
+            <p style="margin-top: 20px; font-size: 10px; letter-spacing: 4px; color: var(--gold);">CHURNING THE OCEAN...</p>
+        </div>
+
+        <div id="idleState" style="position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); text-align:center; color:#222;">
+            <div style="font-size: 100px; opacity: 0.1;">🕉️</div>
+        </div>
+
+        <img id="artDisplay" src="">
+
+        <div class="wisdom-overlay" id="overlay">
+            <div class="shloka-devanagari" id="sanskritText"></div>
+            <div class="interpretation" id="aiLogic"></div>
+            
+            <div class="audio-wave" onclick="speakWisdom()" style="cursor: pointer;">
+                <div class="dot"></div>
+                <div class="dot" style="animation-delay: 0.2s"></div>
+                <div class="dot" style="animation-delay: 0.4s"></div>
+                <span>LISTEN TO VEDIC CHANT</span>
+            </div>
+        </div>
+    </section>
+</main>
+
+<script>
+    async function awaken() {
+        const input = document.getElementById('userInput').value;
+        const loader = document.getElementById('loader');
+        const overlay = document.getElementById('overlay');
+        const art = document.getElementById('artDisplay');
+        const sanskrit = document.getElementById('sanskritText');
+        const interpretation = document.getElementById('aiLogic');
+        const idle = document.getElementById('idleState');
+
+        if(!input) return;
+
+        // Reset UI
+        loader.style.display = "block";
+        overlay.classList.remove('active');
+        idle.style.display = "none";
+        art.style.opacity = "0";
+
+        // Step 1: Generate Sacred Visual (8K Aesthetic)
+        const seed = Math.floor(Math.random() * 999999);
+        const prompt = encodeURIComponent(`${input}, ancient vedic spiritual painting, cosmic golden ratio, radiant divine light, cinematic 8k, ultra-detailed mythological art`);
+        const imageUrl = `https://pollinations.ai/p/${prompt}?width=1080&height=1350&seed=${seed}&nologo=true`;
+
+        // Preload Image
+        const img = new Image();
+        img.src = imageUrl;
+        img.onload = () => {
+            loader.style.display = "none";
+            art.src = imageUrl;
+            art.style.opacity = "0.6";
+            
+            // Step 2: Set Wisdom Text
+            sanskrit.innerText = "तद्विद्धि प्रणिपातेन परिप्रश्नेन सेवया |";
+            interpretation.innerHTML = `<strong>Neural Insight:</strong> Your inquiry into <em>"${input}"</em> aligns with the eternal quest for self-realization. The scriptures suggest that true clarity comes through humble inquiry and selfless service. Focus on the action, for that is your only true domain.`;
+            
+            overlay.classList.add('active');
+        };
+    }
+
+    function speakWisdom() {
+        const text = document.getElementById('aiLogic').innerText;
+        const msg = new SpeechSynthesisUtterance(text);
+        msg.rate = 0.85;
+        msg.pitch = 0.9;
+        window.speechSynthesis.speak(msg);
+    }
+</script>
+
+</body>
+</html>
