@@ -1,0 +1,1815 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="BODHA — Your Personal AI Guru. Ancient Vedic wisdom for modern life clarity.">
+<meta name="theme-color" content="#0C0804">
+<meta property="og:title" content="BODHA · Find Clarity. Live with Dharma.">
+<meta property="og:description" content="Ancient wisdom guiding your modern life.">
+<title>BODHA · Find Clarity. Live with Dharma.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=Noto+Serif+Devanagari:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/*
+ ═══════════════════════════════════════════════════════
+  BODHA V11 · COMPLETE PRODUCT TRANSFORMATION
+  Z-INDEX (all positive):
+    body::before  0   cosmos bg
+    #stars        1   star field
+    .bg-yantra    2   bg yantra
+    .night-bar    8   night prompt
+    main         10   content
+    .sound-bar   15   bottom sound bar
+    nav         100   top bar
+    .modal-ov   200   modals
+    .toast      300   notifications
+    .onboard    400   onboarding (top layer)
+ ═══════════════════════════════════════════════════════
+*/
+:root {
+  --bg:#0C0804;--bg2:#161008;--bg3:#1E1610;
+  --card:rgba(26,17,6,0.92);--card-hov:rgba(80,50,12,0.14);--glass:rgba(255,230,180,0.03);
+  --gold:#E8A030;--gold-lt:#F8C050;--gold-dim:rgba(232,160,48,0.15);--gold-glow:rgba(232,160,48,0.30);
+  --saffron:#F06820;--saf-soft:#FFA050;--saf-dim:rgba(240,104,32,0.15);
+  --jade:#48B888;--jade-lt:#70D0A8;--jade-dim:rgba(72,184,136,0.15);
+  --lotus:#D06890;--lotus-dim:rgba(208,104,144,0.15);
+  --ame:#8868C8;--ame-dim:rgba(136,104,200,0.16);
+  --sky:#60B8D8;--sky-dim:rgba(96,184,216,0.14);
+  --moon:#F5EDD5;--moon-85:rgba(245,237,213,0.85);--moon-60:rgba(245,237,213,0.60);--moon-35:rgba(245,237,213,0.35);
+  --bdr:rgba(232,160,48,0.20);--bdr-hi:rgba(232,160,48,0.48);--bdr-fo:rgba(232,160,48,0.72);
+  --guru-k:#E8A030;--guru-s:#60B8D8;--guru-b:#48B888;
+  --rl:22px;--rm:14px;--rs:8px;
+  --xs:11px;--sm:14px;--base:18px;--md:20px;--lg:24px;--xl:32px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:16px;scroll-behavior:smooth}
+body{background:var(--bg);color:var(--moon);font-family:'DM Sans',sans-serif;min-height:100vh;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.75;position:relative;isolation:isolate}
+button{font-family:inherit;cursor:pointer}
+textarea{font-family:'Cormorant Garamond',Georgia,serif}
+a{text-decoration:none;color:inherit}
+
+/* BG */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;background:radial-gradient(ellipse 70% 55% at 12% 5%,#2a1504 0%,transparent 52%),radial-gradient(ellipse 55% 60% at 88% 92%,#1e1008 0%,transparent 50%),radial-gradient(ellipse 100% 100% at 50% 50%,#161008 0%,#0C0804 100%)}
+#stars{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.50}
+.bg-yantra{position:fixed;top:50%;left:50%;transform:translate(-50%,-50%);width:min(88vw,660px);aspect-ratio:1;opacity:.028;z-index:2;animation:y-rot 170s linear infinite;pointer-events:none}
+@keyframes y-rot{to{transform:translate(-50%,-50%) rotate(360deg)}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes scalePop{from{opacity:0;transform:scale(.92)}to{opacity:1;transform:scale(1)}}
+@keyframes pulse{0%,100%{opacity:.35;transform:scale(.7)}50%{opacity:1;transform:scale(1.2)}}
+@keyframes breathe{0%,100%{opacity:.32}50%{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes slideUp{from{transform:translateY(100%)}to{transform:translateY(0)}}
+@keyframes glow{0%,100%{box-shadow:0 0 10px var(--gold-glow)}50%{box-shadow:0 0 28px var(--gold-glow),0 0 48px rgba(232,160,48,.1)}}
+.fu{animation:fadeUp .65s ease both}
+.fu1{animation-delay:.06s}.fu2{animation-delay:.18s}.fu3{animation-delay:.30s}.fu4{animation-delay:.44s}
+
+/* ── ONBOARDING ── */
+.onboard{position:fixed;inset:0;z-index:400;background:rgba(12,8,4,.97);backdrop-filter:blur(20px);display:flex;align-items:center;justify-content:center;padding:20px}
+.onboard.hidden{display:none}
+.ob-box{max-width:560px;width:100%;text-align:center}
+.ob-logo{font-family:'Cinzel Decorative',serif;font-size:28px;letter-spacing:7px;color:var(--gold);text-shadow:0 0 30px var(--gold-glow);margin-bottom:8px}
+.ob-sub{font-size:var(--sm);letter-spacing:3px;color:var(--moon-35);font-style:italic;margin-bottom:40px}
+.ob-step{display:none}.ob-step.active{display:block;animation:fadeUp .5s ease both}
+.ob-q{font-family:'Cormorant Garamond',serif;font-size:clamp(24px,4vw,34px);color:var(--moon);margin-bottom:32px;font-style:italic;line-height:1.4}
+.ob-opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.ob-opt{
+  padding:20px 14px;border:1px solid var(--bdr);border-radius:var(--rl);
+  background:var(--card);color:var(--moon-85);
+  font-size:var(--base);cursor:pointer;transition:all .28s;text-align:center;
+  line-height:1.4;
+}
+.ob-opt span{display:block;font-size:28px;margin-bottom:8px}
+.ob-opt:hover,.ob-opt.sel{border-color:var(--gold);background:var(--gold-dim);color:var(--gold)}
+.ob-opt.sel{box-shadow:0 0 20px var(--gold-glow)}
+.ob-guru-opts{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
+.ob-guru{flex:1;min-width:120px;padding:20px 12px;border:1px solid var(--bdr);border-radius:var(--rl);background:var(--card);cursor:pointer;transition:all .28s;text-align:center}
+.ob-guru span{display:block;font-size:30px;margin-bottom:6px}
+.ob-guru-name{font-family:'Cinzel Decorative',serif;font-size:14px;color:var(--gold);letter-spacing:2px}
+.ob-guru-desc{font-size:12px;color:var(--moon-35);margin-top:4px;font-style:italic}
+.ob-guru:hover,.ob-guru.sel{border-color:var(--gold);background:var(--gold-dim)}
+.ob-guru.sel{box-shadow:0 0 18px var(--gold-glow)}
+.ob-btn{
+  width:100%;padding:18px;border:none;border-radius:50px;
+  background:linear-gradient(135deg,#c07018,var(--gold),#d88520);
+  color:#100804;font-family:'Cinzel Decorative',serif;
+  font-size:11px;letter-spacing:5px;text-transform:uppercase;
+  cursor:pointer;transition:all .33s;
+  box-shadow:0 9px 30px var(--gold-glow);
+}
+.ob-btn:hover{transform:translateY(-2px);box-shadow:0 16px 46px var(--gold-glow)}
+.ob-skip{display:block;margin-top:14px;font-size:12px;color:var(--moon-35);cursor:pointer;letter-spacing:2px;text-transform:uppercase;transition:color .2s}
+.ob-skip:hover{color:var(--moon-60)}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:13px 5%;background:rgba(12,8,4,.86);backdrop-filter:blur(22px) saturate(1.5);-webkit-backdrop-filter:blur(22px) saturate(1.5);border-bottom:1px solid var(--bdr)}
+.logo{font-family:'Cinzel Decorative',serif;font-size:20px;letter-spacing:7px;color:var(--gold);text-shadow:0 0 26px var(--gold-glow);cursor:pointer}
+.logo-sub{font-size:9px;letter-spacing:3px;color:var(--moon-35);display:block;margin-top:2px;font-family:'DM Sans'}
+.nav-r{display:flex;align-items:center;gap:10px}
+.s-dot{width:7px;height:7px;border-radius:50%;background:#72E09A;box-shadow:0 0 8px #72E09A;animation:pulse 2.4s ease infinite}
+.guru-indicator{display:flex;align-items:center;gap:6px;padding:5px 12px;border:1px solid var(--bdr);border-radius:50px;font-size:12px;cursor:pointer;transition:all .25s}
+.guru-indicator:hover{border-color:var(--bdr-hi);background:var(--gold-dim)}
+#streak-badge{display:none;align-items:center;gap:5px;padding:5px 12px;border:1px solid rgba(240,104,32,.3);border-radius:50px;font-size:12px;color:var(--saffron)}
+#streak-badge.show{display:flex}
+.nav-btn{padding:7px 14px;border:1px solid var(--bdr);border-radius:50px;background:transparent;font-size:10px;letter-spacing:2px;text-transform:uppercase;transition:all .25s}
+.nav-btn.gold{color:var(--gold)}.nav-btn.gold:hover{background:var(--gold-dim);border-color:var(--bdr-hi)}
+.nav-btn.jade{color:var(--jade);border-color:var(--jade-dim)}.nav-btn.jade:hover{background:var(--jade-dim);border-color:var(--jade)}
+.nav-btn.lotus{color:var(--lotus);border-color:var(--lotus-dim)}.nav-btn.lotus:hover{background:var(--lotus-dim);border-color:var(--lotus)}
+
+/* ── NIGHT REFLECTION BAR ── */
+.night-bar{position:fixed;top:58px;left:0;right:0;z-index:8;display:none;align-items:center;justify-content:center;gap:14px;padding:10px 5%;background:linear-gradient(90deg,rgba(20,12,30,.95),rgba(14,8,20,.95));border-bottom:1px solid rgba(136,104,200,.3);animation:slideUp .4s ease both}
+.night-bar.show{display:flex}
+.night-bar p{font-size:var(--sm);color:var(--moon-60);font-style:italic;font-family:'Cormorant Garamond',serif}
+.night-btn{padding:6px 16px;border:1px solid var(--ame-dim);border-radius:50px;background:var(--ame-dim);color:var(--ame);font-size:12px;cursor:pointer;transition:all .24s}
+.night-btn:hover{border-color:var(--ame);background:rgba(136,104,200,.28)}
+.night-close{background:transparent;border:none;color:var(--moon-35);font-size:18px;cursor:pointer;padding:0 4px;line-height:1;transition:color .2s}
+.night-close:hover{color:var(--moon)}
+
+/* ── MAIN LAYOUT ── */
+main{position:relative;z-index:10;display:grid;grid-template-columns:1fr 1.28fr;gap:28px;padding:102px 5% 100px;max-width:1460px;margin:0 auto;min-height:100vh;align-items:start}
+.left{display:flex;flex-direction:column;gap:20px;position:sticky;top:90px}
+.right{display:flex;flex-direction:column;gap:20px}
+
+/* ── HERO ── */
+.hero-badge{display:inline-flex;align-items:center;gap:7px;padding:5px 14px;border:1px solid var(--bdr);border-radius:50px;font-size:10px;letter-spacing:3px;color:var(--moon-60);background:var(--glass);width:fit-content;margin-bottom:10px;text-transform:uppercase}
+.hero-badge .dot{width:5px;height:5px;border-radius:50%;background:var(--saffron);flex-shrink:0;animation:pulse 2s ease infinite}
+.headline{font-family:'Cinzel Decorative',serif;font-size:clamp(26px,3vw,46px);line-height:1.2;background:linear-gradient(148deg,var(--moon) 12%,var(--gold) 52%,var(--saffron) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px}
+.subline{font-size:var(--base);font-weight:300;color:var(--moon-60);line-height:1.85;max-width:370px;font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:4px}
+
+/* ── INTENT BUTTONS ── */
+.intent-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+.intent-btn{
+  padding:14px 10px;
+  border:1px solid var(--bdr);border-radius:var(--rm);
+  background:var(--card);color:var(--moon-60);
+  font-size:var(--sm);cursor:pointer;transition:all .25s;text-align:center;line-height:1.4;
+}
+.intent-btn span{display:block;font-size:20px;margin-bottom:4px}
+.intent-btn:hover{border-color:var(--bdr-hi);color:var(--moon-85);background:var(--card-hov);transform:translateY(-1px)}
+.intent-btn.active{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);box-shadow:0 0 14px var(--gold-glow)}
+
+/* ── GURU MODE SELECTOR ── */
+.guru-row{display:flex;gap:7px}
+.guru-btn{
+  flex:1;padding:10px 6px;
+  border:1px solid var(--bdr);border-radius:var(--rm);
+  background:var(--card);cursor:pointer;transition:all .25s;text-align:center;
+}
+.guru-btn span{display:block;font-size:18px;margin-bottom:3px}
+.guru-btn .gn{font-size:11px;letter-spacing:2px;color:var(--moon-35);text-transform:uppercase;transition:color .25s}
+.guru-btn:hover{border-color:var(--bdr-hi);background:var(--card-hov)}
+.guru-btn.active-k{border-color:var(--guru-k);background:rgba(232,160,48,.1)}.guru-btn.active-k .gn{color:var(--guru-k)}
+.guru-btn.active-s{border-color:var(--guru-s);background:rgba(96,184,216,.1)}.guru-btn.active-s .gn{color:var(--guru-s)}
+.guru-btn.active-b{border-color:var(--guru-b);background:rgba(72,184,136,.1)}.guru-btn.active-b .gn{color:var(--guru-b)}
+
+/* ── INPUT CARD ── */
+.card{background:var(--card);border:1px solid var(--bdr);border-radius:var(--rl);padding:26px 28px;backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);box-shadow:0 20px 52px rgba(0,0,0,.55),inset 0 1px 0 rgba(255,230,150,.05);transition:border-color .34s}
+.card:focus-within{border-color:var(--bdr-fo)}
+.inp-lbl{display:block;font-size:var(--xs);letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-style:italic;margin-bottom:12px}
+.q-box{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(245,237,213,.12);color:var(--moon);font-size:20px;font-weight:300;line-height:1.65;padding:8px 0 12px;outline:none;resize:none;min-height:82px;transition:border-color .34s}
+.q-box::placeholder{color:var(--moon-35);font-style:italic}
+.q-box:focus{border-bottom-color:var(--gold)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:11px 0 15px}
+.chip{padding:6px 13px;border:1px solid var(--bdr);border-radius:50px;font-size:13px;font-style:italic;color:var(--moon-60);cursor:pointer;transition:all .22s;white-space:nowrap;user-select:none}
+.chip:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);transform:translateY(-1px)}
+.err-box{font-size:var(--sm);color:#F08870;font-style:italic;padding:9px 13px;margin-bottom:11px;background:rgba(240,136,112,.07);border:1px solid rgba(240,136,112,.2);border-radius:var(--rs);display:none}
+.btn-invoke{width:100%;border:none;background:linear-gradient(135deg,#c07018,var(--gold),#d88520);color:#100804;font-family:'Cinzel Decorative',serif;font-size:11px;font-weight:700;letter-spacing:5px;text-transform:uppercase;padding:19px 26px;border-radius:50px;box-shadow:0 9px 30px var(--gold-glow);transition:all .33s;position:relative;overflow:hidden}
+.btn-invoke::after{content:'';position:absolute;inset:0;background:linear-gradient(118deg,transparent 32%,rgba(255,255,255,.22) 50%,transparent 68%);transform:translateX(-130%);transition:transform .55s}
+.btn-invoke:not(:disabled):hover::after{transform:translateX(130%)}
+.btn-invoke:not(:disabled):hover{transform:translateY(-3px);box-shadow:0 16px 46px var(--gold-glow)}
+.btn-invoke:not(:disabled):active{transform:translateY(-1px)}
+.btn-invoke:disabled{opacity:.42;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* ── SANKALPA ── */
+.sk-card{background:linear-gradient(135deg,rgba(20,12,4,.94),rgba(28,16,6,.96));border:1px solid var(--ame-dim);border-radius:var(--rl);padding:22px 26px;display:none}
+.sk-card.on{display:block;animation:scalePop .5s ease both}
+.sk-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sk-title{font-size:var(--xs);letter-spacing:4px;text-transform:uppercase;color:var(--ame);font-style:italic}
+.sk-badge{font-size:10px;letter-spacing:2px;color:var(--moon-35);border:1px solid var(--bdr);border-radius:50px;padding:3px 10px}
+.sk-text{font-family:'Cormorant Garamond',serif;font-size:var(--lg);font-style:italic;font-weight:500;color:var(--moon-85);line-height:1.7;margin-bottom:11px;border-left:2px solid var(--ame);padding-left:15px}
+.sk-sub{font-size:var(--sm);color:var(--moon-35);font-style:italic;margin-bottom:11px}
+.sk-acts{display:flex;gap:7px;flex-wrap:wrap}
+.btn-adopt{padding:9px 18px;border:1px solid var(--ame-dim);border-radius:50px;background:var(--ame-dim);color:var(--ame);font-size:12px;letter-spacing:3px;text-transform:uppercase;transition:all .26s}
+.btn-adopt:hover{border-color:var(--ame);background:rgba(136,104,200,.28);transform:translateY(-1px)}
+.btn-adopt.adopted{border-color:var(--jade);color:var(--jade);background:var(--jade-dim)}
+
+/* ── HISTORY ── */
+#hist-wrap{display:none}
+.hist-lbl{font-size:var(--xs);letter-spacing:4px;text-transform:uppercase;color:var(--moon-35);font-style:italic;margin-bottom:8px}
+.hist-list{display:flex;flex-direction:column;gap:5px}
+.hist-item{display:flex;align-items:center;gap:10px;padding:10px 14px;border:1px solid var(--bdr);border-radius:var(--rs);cursor:pointer;font-size:16px;color:var(--moon-60);font-style:italic;transition:all .22s;font-family:'Cormorant Garamond',serif}
+.hist-item:hover{border-color:var(--bdr-hi);color:var(--moon-85);background:var(--card-hov)}
+.hist-dot{width:5px;height:5px;border-radius:50%;background:var(--lotus);flex-shrink:0}
+
+/* ══ RIGHT: DASHBOARD ══ */
+.dashboard{border:1px solid var(--bdr);border-radius:var(--rl);background:var(--card);overflow:hidden;box-shadow:0 20px 50px rgba(0,0,0,.5);animation:fadeIn .8s ease both}
+.dash-top{padding:22px 26px 18px;border-bottom:1px solid var(--bdr);display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.dash-greeting{font-family:'Cormorant Garamond',serif;font-size:var(--lg);font-style:italic;color:var(--moon-85);margin-bottom:3px}
+.dash-date{font-size:var(--sm);color:var(--moon-35);letter-spacing:1px}
+.dash-clock{font-family:'Cinzel Decorative',serif;font-size:24px;color:var(--gold);letter-spacing:3px;text-align:right;line-height:1}
+.dash-clock-sub{font-size:10px;color:var(--moon-35);letter-spacing:2px;text-align:right;margin-top:4px}
+.dash-streak{padding:11px 26px;border-bottom:1px solid var(--bdr);display:flex;align-items:center;gap:10px;background:rgba(240,104,32,.06)}
+.streak-info{flex:1}.streak-num{font-size:var(--md);font-weight:600;color:var(--saffron);font-family:'Cinzel Decorative',serif}
+.streak-lbl{font-size:10px;letter-spacing:2px;color:var(--moon-35);text-transform:uppercase;margin-top:1px}
+.streak-bar{flex:1;height:4px;background:rgba(240,104,32,.15);border-radius:2px;overflow:hidden;max-width:110px}
+.streak-fill{height:100%;background:linear-gradient(90deg,var(--saffron),var(--gold));border-radius:2px;transition:width 1s ease}
+.dash-verse{padding:20px 26px;border-bottom:1px solid var(--bdr)}
+.dash-sec-title{font-size:var(--xs);letter-spacing:4px;text-transform:uppercase;color:var(--saffron);font-style:italic;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.dash-sec-title::before{content:'';display:block;width:18px;height:1px;background:var(--saffron);opacity:.5}
+.verse-deva{font-family:'Noto Serif Devanagari',serif;font-size:21px;color:var(--saf-soft);line-height:1.9;margin-bottom:8px}
+.verse-meaning{font-family:'Cormorant Garamond',serif;font-size:var(--base);font-style:italic;color:var(--moon-60);line-height:1.8;margin-bottom:6px}
+.verse-source{font-size:12px;color:var(--moon-35);letter-spacing:1.5px}
+/* Breath */
+.dash-breath{padding:20px 26px;border-bottom:1px solid var(--bdr)}
+.breath-wrap{display:flex;align-items:center;gap:20px}
+.breath-ring{position:relative;width:86px;height:86px;flex-shrink:0}
+.b-svg{width:86px;height:86px;transform:rotate(-90deg)}
+.b-bg{fill:none;stroke:rgba(245,237,213,.08);stroke-width:5}
+.b-arc{fill:none;stroke:var(--sky);stroke-width:5;stroke-linecap:round;stroke-dasharray:240;stroke-dashoffset:240;transition:stroke-dashoffset .1s linear}
+.b-lbl{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:10px;letter-spacing:2px;color:var(--sky);text-align:center;font-style:italic;line-height:1.4;pointer-events:none;white-space:nowrap}
+.breath-info{flex:1}
+.b-phase{font-size:var(--md);color:var(--sky);font-family:'Cormorant Garamond',serif;font-style:italic;margin-bottom:3px}
+.b-count{font-family:'Cinzel Decorative',serif;font-size:26px;color:var(--moon-85);line-height:1;margin-bottom:5px}
+.b-desc{font-size:var(--sm);color:var(--moon-35);line-height:1.6}
+.b-btns{display:flex;gap:8px;margin-top:11px}
+.b-btn{padding:7px 16px;border:1px solid var(--sky-dim);border-radius:50px;background:transparent;color:var(--sky);font-size:12px;letter-spacing:2px;text-transform:uppercase;transition:all .22s}
+.b-btn:hover,.b-btn.on{border-color:var(--sky);background:var(--sky-dim)}
+/* Quick chips */
+.dash-quick{padding:16px 26px}
+.dash-q-lbl{font-size:var(--xs);letter-spacing:3px;text-transform:uppercase;color:var(--moon-35);font-style:italic;margin-bottom:9px}
+.dash-chips{display:flex;flex-wrap:wrap;gap:6px}
+.d-chip{padding:6px 13px;border:1px solid var(--bdr);border-radius:50px;font-size:13px;font-style:italic;color:var(--moon-60);cursor:pointer;transition:all .22s}
+.d-chip:hover{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);transform:translateY(-1px)}
+
+/* ══ SOUND BAR (bottom) ══ */
+.sound-bar{position:fixed;bottom:0;left:0;right:0;z-index:15;background:rgba(12,8,4,.92);backdrop-filter:blur(18px);border-top:1px solid var(--bdr);padding:10px 5%;display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.sb-modes{display:flex;gap:7px}
+.sb-mode{padding:6px 13px;border:1px solid var(--bdr);border-radius:50px;font-size:11px;letter-spacing:2px;background:transparent;color:var(--moon-35);cursor:pointer;transition:all .22s;display:flex;align-items:center;gap:5px;white-space:nowrap}
+.sb-mode:hover{border-color:var(--bdr-hi);color:var(--moon-60)}
+.sb-mode.on{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+.sb-vol{display:flex;align-items:center;gap:8px;flex:1;max-width:180px}
+.sb-vol-lbl{font-size:10px;color:var(--moon-35);letter-spacing:1px;white-space:nowrap}
+#vol-slider{flex:1;accent-color:var(--gold);cursor:pointer;height:3px}
+.sb-viz{display:flex;align-items:flex-end;gap:2px;height:16px;margin:0 4px}
+.sbv{width:3px;border-radius:2px;background:var(--gold);opacity:.4;min-height:3px;transform-origin:bottom}
+.sbv.on{opacity:.82;animation:m-dance var(--d,.7s) ease infinite alternate}
+@keyframes m-dance{from{transform:scaleY(.15)}to{transform:scaleY(1)}}
+.sb-play{padding:7px 16px;border:1px solid var(--bdr);border-radius:50px;background:transparent;font-size:11px;letter-spacing:2px;color:var(--moon-60);cursor:pointer;transition:all .22s;white-space:nowrap}
+.sb-play:hover,.sb-play.on{border-color:var(--gold);color:var(--gold);background:var(--gold-dim)}
+.sb-freq{display:flex;gap:5px}
+.sb-f{padding:4px 9px;border:1px solid var(--bdr);border-radius:50px;font-size:10px;letter-spacing:1px;color:var(--moon-35);cursor:pointer;transition:all .2s}
+.sb-f:hover,.sb-f.on{border-color:var(--jade);color:var(--jade);background:var(--jade-dim)}
+
+/* ══ VIEWPORT (sacred image) ══ */
+.viewport{position:relative;border-radius:var(--rl);overflow:hidden;border:1px solid var(--bdr);background:var(--bg2);min-height:420px;display:flex;align-items:center;justify-content:center}
+#art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity 2.2s ease}
+#loader{position:absolute;inset:0;z-index:50;display:none;flex-direction:column;align-items:center;justify-content:center;gap:18px;background:rgba(12,8,4,.58);backdrop-filter:blur(5px);border-radius:var(--rl)}
+.l-ring svg{width:66px;height:66px;animation:spin 3s linear infinite}
+.l-txt{font-size:10px;letter-spacing:5px;color:var(--gold);font-style:italic;text-transform:uppercase;animation:breathe 2.2s ease infinite}
+
+/* ══ YANTRA ══ */
+.yantra-panel{background:var(--card);border:1px solid var(--bdr);border-radius:var(--rl);padding:24px;text-align:center;display:none}
+.yantra-panel.on{display:block;animation:scalePop .65s ease both}
+.yantra-lbl{font-size:var(--xs);letter-spacing:4px;text-transform:uppercase;color:var(--gold);font-style:italic;margin-bottom:14px}
+#healing-yantra{width:100%;max-width:280px;animation:y-breathe 6s ease infinite;filter:drop-shadow(0 0 12px var(--gold-glow))}
+@keyframes y-breathe{0%,100%{transform:scale(1);filter:drop-shadow(0 0 8px var(--gold-glow))}50%{transform:scale(1.022);filter:drop-shadow(0 0 22px var(--gold-glow))}}
+.yantra-name{font-family:'Cormorant Garamond',serif;font-size:17px;color:var(--gold);font-style:italic;margin-top:11px}
+.yantra-meaning{font-size:var(--sm);color:var(--moon-35);margin-top:4px;font-style:italic}
+
+/* ══ RESULT SECTIONS ══ */
+.rs{display:none}.rs.on{display:block;animation:fadeUp .55s ease both}
+.sc{background:var(--card);border:1px solid var(--bdr);border-radius:var(--rl);padding:22px 26px;box-shadow:0 14px 40px rgba(0,0,0,.38)}
+.sc-shloka{border-color:rgba(240,104,32,.32);background:rgba(16,8,2,.92)}
+.sc-meaning{border-color:rgba(72,184,136,.26);background:rgba(2,12,6,.92)}
+.sc-insight{border-color:rgba(136,104,200,.28);background:rgba(8,5,18,.92)}
+.sc-action{border-color:rgba(208,104,144,.28);background:rgba(14,4,10,.92);position:relative}
+.sc-action::before{content:'Today\'s Action';position:absolute;top:-10px;left:20px;background:var(--lotus);color:#fff;font-size:10px;letter-spacing:3px;padding:3px 12px;border-radius:50px;text-transform:uppercase;font-family:'DM Sans'}
+.sc-hdr{display:flex;align-items:center;gap:9px;margin-bottom:14px}
+.sc-icon{font-size:18px}.sc-title{font-size:var(--xs);letter-spacing:4px;text-transform:uppercase}
+.sc-shloka .sc-title{color:var(--saffron)}.sc-meaning .sc-title{color:var(--jade)}.sc-insight .sc-title{color:var(--ame)}.sc-action .sc-title{color:var(--lotus)}
+.shloka-deva{font-family:'Noto Serif Devanagari',serif;font-size:24px;font-weight:500;color:var(--saf-soft);line-height:1.95;margin-bottom:8px;border-left:3px solid var(--saffron);padding-left:15px}
+.shloka-ref{font-size:var(--sm);color:var(--moon-35);font-style:italic;letter-spacing:1.5px;padding-left:18px}
+.meaning-body{font-size:var(--base);color:var(--moon-85);line-height:1.88;font-family:'Cormorant Garamond',serif;font-style:italic}
+.insight-body{font-size:var(--md);color:var(--moon-85);line-height:1.95;font-family:'Cormorant Garamond',serif;font-style:italic}
+.insight-body strong{color:var(--gold-lt);font-weight:600;font-style:normal}
+.action-body{font-size:var(--base);color:var(--moon-85);line-height:1.88;font-weight:500}
+.action-pill{display:inline-flex;align-items:center;gap:7px;margin-top:11px;padding:9px 17px;border:1px solid var(--lotus-dim);border-radius:50px;background:var(--lotus-dim);color:var(--lotus);font-size:var(--sm);font-weight:500}
+
+/* Save button */
+.save-row{display:flex;align-items:center;gap:8px;margin-top:10px}
+.btn-save{padding:8px 16px;border:1px solid rgba(208,104,144,.3);border-radius:50px;background:transparent;color:var(--lotus);font-size:12px;transition:all .24s}
+.btn-save:hover,.btn-save.saved{border-color:var(--lotus);background:var(--lotus-dim)}
+.btn-save.saved{animation:glow 2s ease 1}
+.save-count{font-size:12px;color:var(--moon-35);font-style:italic}
+
+/* ── ACTION BUTTONS ── */
+.act-row{display:none;gap:8px;flex-wrap:wrap;margin-top:2px}
+.ab{display:inline-flex;align-items:center;gap:6px;padding:9px 16px;border:1px solid var(--bdr);border-radius:50px;background:transparent;color:var(--moon-60);font-size:var(--sm);transition:all .22s}
+.ab:hover{border-color:var(--bdr-hi);color:var(--moon);background:var(--card-hov)}
+.ab.voice{border-color:rgba(136,104,200,.32);color:var(--ame)}.ab.voice:hover{border-color:var(--ame);background:var(--ame-dim)}
+.ab.voice.playing{border-color:var(--ame);background:var(--ame-dim);animation:glow 1.6s ease infinite}
+.ab.yt{border-color:rgba(255,80,60,.28);color:#FF6850}.ab.yt:hover{border-color:#FF6850;background:rgba(255,80,60,.08)}
+.ab.share{border-color:rgba(72,184,136,.3);color:var(--jade)}.ab.share:hover{border-color:var(--jade);background:var(--jade-dim)}
+.ab svg{width:12px;height:12px;flex-shrink:0}
+
+/* ── DONATION TRIGGER ── */
+.donate-trigger{display:none;margin-top:2px;background:linear-gradient(135deg,rgba(22,14,5,.96),rgba(28,12,4,.98));border:1px solid var(--lotus-dim);border-radius:var(--rl);padding:24px 26px;animation:fadeUp .6s ease both;position:relative;overflow:hidden}
+.donate-trigger::before{content:'';position:absolute;top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:radial-gradient(circle,rgba(208,104,144,.08) 0%,transparent 70%);pointer-events:none}
+.donate-trigger.show{display:block}
+.dt-q{font-family:'Cormorant Garamond',serif;font-size:var(--lg);color:var(--moon);font-style:italic;margin-bottom:4px}
+.dt-sub{font-size:var(--sm);color:var(--moon-60);font-style:italic;margin-bottom:16px}
+.dt-btns{display:flex;gap:9px;flex-wrap:wrap}
+.dt-btn-main{flex:1;padding:14px;border:none;border-radius:50px;background:linear-gradient(135deg,#7a1850,var(--lotus),#b04888);color:#fff;font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:all .33s;box-shadow:0 8px 28px rgba(208,104,144,.26)}
+.dt-btn-main:hover{transform:translateY(-2px);box-shadow:0 14px 40px rgba(208,104,144,.38)}
+.dt-btn-skip{padding:14px 18px;border:1px solid var(--bdr);border-radius:50px;background:transparent;color:var(--moon-35);font-size:12px;cursor:pointer;transition:all .22s}
+.dt-btn-skip:hover{color:var(--moon-60);border-color:var(--bdr-hi)}
+
+/* ══ MODALS ══ */
+.modal-ov{position:fixed;inset:0;z-index:200;background:rgba(12,8,4,.94);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:16px}
+.modal-ov.on{display:flex;animation:fadeIn .36s ease both}
+.modal-box{background:var(--bg2);border:1px solid var(--bdr);border-radius:var(--rl);max-width:700px;width:100%;max-height:92vh;overflow-y:auto;padding:32px 34px;box-shadow:0 40px 80px rgba(0,0,0,.7);position:relative}
+.modal-x{position:absolute;top:14px;right:16px;background:transparent;border:1px solid var(--bdr);border-radius:50%;width:32px;height:32px;color:var(--moon-60);font-size:16px;transition:all .22s;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.modal-x:hover{border-color:var(--bdr-hi);color:var(--moon)}
+.modal-title{font-family:'Cinzel Decorative',serif;font-size:19px;color:var(--gold);margin-bottom:5px}
+.modal-sub{font-size:var(--sm);color:var(--moon-35);margin-bottom:18px;font-style:italic}
+
+/* YT Script */
+.script-out{font-family:'Cormorant Garamond',serif;font-size:var(--base);color:var(--moon-85);line-height:2;white-space:pre-wrap;border:1px solid var(--bdr);border-radius:var(--rm);padding:18px;background:var(--glass);min-height:150px;max-height:50vh;overflow-y:auto}
+.script-out.loading{color:var(--moon-35);font-style:italic}
+.modal-acts{display:flex;gap:8px;margin-top:14px;flex-wrap:wrap}
+
+/* Wisdom Library */
+.wl-grid{display:flex;flex-direction:column;gap:12px;max-height:60vh;overflow-y:auto;margin-bottom:14px}
+.wl-card{border:1px solid var(--bdr);border-radius:var(--rm);padding:16px 18px;background:var(--glass)}
+.wl-date{font-size:10px;letter-spacing:2px;color:var(--moon-35);margin-bottom:8px;text-transform:uppercase}
+.wl-query{font-size:var(--sm);color:var(--gold);font-style:italic;margin-bottom:6px}
+.wl-insight{font-family:'Cormorant Garamond',serif;font-size:var(--base);color:var(--moon-60);line-height:1.75;margin-bottom:8px;font-style:italic}
+.wl-acts{display:flex;gap:7px}
+.wl-btn{padding:5px 12px;border:1px solid var(--bdr);border-radius:50px;background:transparent;color:var(--moon-35);font-size:11px;cursor:pointer;transition:all .22s}
+.wl-btn:hover{border-color:var(--bdr-hi);color:var(--moon)}
+
+/* Donate modal */
+.dm-verse{font-family:'Cormorant Garamond',serif;font-size:var(--base);color:var(--moon-85);font-style:italic;line-height:1.9;margin-bottom:20px;padding:15px;border:1px solid var(--bdr);border-radius:var(--rm);background:var(--glass)}
+.dm-upi{border:1px solid var(--bdr);border-radius:var(--rm);padding:16px;background:var(--glass);display:flex;align-items:center;gap:14px;margin-bottom:14px}
+.dm-impact{font-size:var(--sm);color:var(--moon-35);font-style:italic;text-align:center;padding:12px;border:1px solid rgba(72,184,136,.2);border-radius:var(--rm);background:rgba(72,184,136,.04);margin-bottom:14px}
+.dm-impact strong{color:var(--jade)}
+
+/* About */
+.about-section{margin-bottom:20px}
+.about-section h3{font-family:'Cinzel Decorative',serif;font-size:16px;color:var(--gold);margin-bottom:8px}
+.about-section p{font-size:var(--base);color:var(--moon-60);line-height:1.85;font-family:'Cormorant Garamond',serif;font-style:italic}
+
+/* Night Reflection */
+.reflect-ta{width:100%;background:var(--glass);border:1px solid var(--bdr);border-radius:var(--rm);color:var(--moon);font-family:'Cormorant Garamond',serif;font-size:var(--base);padding:14px;resize:none;outline:none;min-height:100px;margin-bottom:12px;transition:border-color .3s}
+.reflect-ta:focus{border-color:var(--ame)}
+
+/* Share Image Preview */
+.share-preview{width:100%;max-width:360px;margin:0 auto 16px;display:block;border:1px solid var(--bdr);border-radius:var(--rm)}
+
+/* ── FOOTER ── */
+footer{position:relative;z-index:10;text-align:center;padding:22px 6% 24px;font-size:10px;letter-spacing:3px;color:var(--moon-35);font-style:italic;border-top:1px solid var(--bdr);margin-bottom:52px}
+.footer-links{display:flex;align-items:center;justify-content:center;gap:16px;flex-wrap:wrap;margin-bottom:8px}
+.footer-links a{color:var(--moon-35);font-size:10px;letter-spacing:2px;transition:color .22s}
+.footer-links a:hover{color:var(--gold)}
+
+/* ── TOAST ── */
+.toast{position:fixed;bottom:58px;right:20px;z-index:300;padding:11px 18px;border-radius:var(--rm);background:var(--bg3);border:1px solid var(--bdr);color:var(--moon-85);font-size:var(--sm);box-shadow:0 10px 34px rgba(0,0,0,.5);transform:translateY(65px);opacity:0;transition:all .36s cubic-bezier(.16,1,.3,1);pointer-events:none}
+.toast.show{transform:none;opacity:1}.toast.ok{border-color:rgba(72,184,136,.5);color:var(--jade)}.toast.err{border-color:rgba(240,104,32,.4);color:var(--saffron)}
+.caret{display:inline-block;width:2px;height:1em;background:var(--gold);margin-left:2px;animation:c-blink .75s step-end infinite;vertical-align:text-bottom}
+@keyframes c-blink{50%{opacity:0}}
+
+/* ── RESPONSIVE ── */
+@media(max-width:1060px){
+  main{grid-template-columns:1fr;padding-top:84px}.left{position:static}.viewport{min-height:360px}
+}
+@media(max-width:640px){
+  nav{padding:11px 4%}.logo{font-size:17px;letter-spacing:5px}
+  main{padding:76px 4% 94px;gap:16px}.card,.sc,.dashboard{padding:16px 14px}
+  .modal-box{padding:20px 16px}.shloka-deva{font-size:20px}.insight-body{font-size:var(--base)}
+  .intent-grid{grid-template-columns:1fr 1fr}.sound-bar{padding:8px 4%;gap:8px}
+  .sb-modes{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+  .dash-top{flex-direction:column;gap:4px}.dash-clock{font-size:20px}
+  .breath-wrap{flex-direction:column;align-items:flex-start}
+  .ob-opts{grid-template-columns:1fr 1fr}.ob-guru-opts{flex-wrap:wrap}
+}
+</style>
+</head>
+<body>
+
+<canvas id="stars"></canvas>
+<svg class="bg-yantra" viewBox="0 0 500 500" fill="none" aria-hidden="true">
+  <circle cx="250" cy="250" r="242" stroke="#E8A030" stroke-width=".5"/>
+  <circle cx="250" cy="250" r="196" stroke="#E8A030" stroke-width=".38"/>
+  <circle cx="250" cy="250" r="150" stroke="#8868C8" stroke-width=".38"/>
+  <circle cx="250" cy="250" r="106" stroke="#E8A030" stroke-width=".5"/>
+  <polygon points="250,24 468,388 32,388" fill="none" stroke="#E8A030" stroke-width=".6"/>
+  <polygon points="250,476 468,112 32,112" fill="none" stroke="#E8A030" stroke-width=".6"/>
+  <polygon points="250,52 444,368 56,368" fill="none" stroke="#F06820" stroke-width=".36"/>
+  <polygon points="250,448 444,132 56,132" fill="none" stroke="#F06820" stroke-width=".36"/>
+  <circle cx="250" cy="250" r="38" stroke="#E8A030" stroke-width=".8"/>
+  <circle cx="250" cy="250" r="7" fill="#E8A030" opacity=".7"/>
+  <line x1="250" y1="8" x2="250" y2="492" stroke="#E8A030" stroke-width=".2"/>
+  <line x1="8" y1="250" x2="492" y2="250" stroke="#E8A030" stroke-width=".2"/>
+  <line x1="74" y1="74" x2="426" y2="426" stroke="#E8A030" stroke-width=".2"/>
+  <line x1="426" y1="74" x2="74" y2="426" stroke="#E8A030" stroke-width=".2"/>
+  <ellipse cx="250" cy="172" rx="14" ry="38" stroke="#D06890" stroke-width=".36"/>
+  <ellipse cx="250" cy="328" rx="14" ry="38" stroke="#D06890" stroke-width=".36"/>
+  <ellipse cx="172" cy="250" rx="38" ry="14" stroke="#D06890" stroke-width=".36"/>
+  <ellipse cx="328" cy="250" rx="38" ry="14" stroke="#D06890" stroke-width=".36"/>
+</svg>
+
+<!-- ══ ONBOARDING ══ -->
+<div class="onboard" id="onboard">
+  <div class="ob-box">
+    <div class="ob-logo">BODHA</div>
+    <div class="ob-sub">Your Personal AI Guru</div>
+    <!-- Step 1 -->
+    <div class="ob-step active" id="ob-step1">
+      <div class="ob-q">What are you seeking<br>right now?</div>
+      <div class="ob-opts">
+        <div class="ob-opt" data-val="peace" onclick="obSelect(this,'seeking')"><span>🕊️</span>Inner Peace</div>
+        <div class="ob-opt" data-val="clarity" onclick="obSelect(this,'seeking')"><span>🎯</span>Life Clarity</div>
+        <div class="ob-opt" data-val="relationships" onclick="obSelect(this,'seeking')"><span>💖</span>Relationships</div>
+        <div class="ob-opt" data-val="spiritual" onclick="obSelect(this,'seeking')"><span>🌱</span>Spiritual Growth</div>
+      </div>
+      <button class="ob-btn" onclick="obNext()">Continue →</button>
+      <span class="ob-skip" onclick="obSkip()">skip &nbsp;→</span>
+    </div>
+    <!-- Step 2 -->
+    <div class="ob-step" id="ob-step2">
+      <div class="ob-q">Choose your<br>AI Guru</div>
+      <div class="ob-guru-opts">
+        <div class="ob-guru" data-guru="krishna" onclick="obSelectGuru(this)">
+          <span>🪘</span>
+          <div class="ob-guru-name">Krishna</div>
+          <div class="ob-guru-desc">Strategy · Dharma · Clarity</div>
+        </div>
+        <div class="ob-guru" data-guru="shiva" onclick="obSelectGuru(this)">
+          <span>🔱</span>
+          <div class="ob-guru-name">Shiva</div>
+          <div class="ob-guru-desc">Stillness · Detachment · Power</div>
+        </div>
+        <div class="ob-guru" data-guru="buddha" onclick="obSelectGuru(this)">
+          <span>🌸</span>
+          <div class="ob-guru-name">Buddha</div>
+          <div class="ob-guru-desc">Peace · Mindfulness · Compassion</div>
+        </div>
+      </div>
+      <button class="ob-btn" onclick="obFinish()">✦ Enter BODHA</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ NAV ══ -->
+<nav>
+  <div class="logo" onclick="doNew()">BODHA<span class="logo-sub">Find Clarity. Live with Dharma.</span></div>
+  <div class="nav-r">
+    <div id="streak-badge"><span>🔥</span><span id="streak-nav-n">0</span><span style="font-size:10px;color:var(--moon-35);letter-spacing:1px">day</span></div>
+    <div class="guru-indicator" id="guru-indicator" onclick="showGuruPicker()">
+      <span id="guru-icon">🪘</span>
+      <span id="guru-nav-name" style="font-size:11px;letter-spacing:2px;color:var(--moon-60)">Krishna</span>
+    </div>
+    <div class="s-dot"></div>
+    <button class="nav-btn jade" onclick="openWisdomLibrary()">📚 Saved</button>
+    <button class="nav-btn gold" onclick="openDonate()">🙏 Support</button>
+    <button class="nav-btn lotus" onclick="openAbout()">ℹ</button>
+  </div>
+</nav>
+
+<!-- ══ NIGHT REFLECTION BAR ══ -->
+<div class="night-bar" id="night-bar">
+  <span>🌙</span>
+  <p>The day is ending. What brought you peace today?</p>
+  <button class="night-btn" onclick="openNightReflect()">Reflect</button>
+  <button class="night-close" onclick="dismissNight()">×</button>
+</div>
+
+<!-- ══ MAIN ══ -->
+<main>
+
+<!-- LEFT -->
+<div class="left">
+  <div class="fu fu1">
+    <div class="hero-badge"><span class="dot"></span>AI Guru · Free Forever</div>
+    <h1 class="headline">Find Clarity.<br>Live with Dharma.</h1>
+    <p class="subline">Ancient wisdom guiding your modern life — decisions, peace, growth.</p>
+  </div>
+
+  <!-- Intent Buttons -->
+  <div class="fu fu2">
+    <div class="inp-lbl" style="margin-bottom:10px">What do you need right now?</div>
+    <div class="intent-grid" id="intent-grid">
+      <button class="intent-btn" data-intent="peace" onclick="setIntent(this)"><span>🧘</span>I need peace</button>
+      <button class="intent-btn" data-intent="problem" onclick="setIntent(this)"><span>💭</span>I have a problem</button>
+      <button class="intent-btn" data-intent="clarity" onclick="setIntent(this)"><span>🎯</span>I need clarity</button>
+      <button class="intent-btn" data-intent="learning" onclick="setIntent(this)"><span>📿</span>I want to learn</button>
+    </div>
+  </div>
+
+  <!-- Guru selector -->
+  <div class="fu fu2">
+    <div class="inp-lbl" style="margin-bottom:9px">Your AI Guru</div>
+    <div class="guru-row">
+      <button class="guru-btn active-k" data-guru="krishna" onclick="setGuru(this)">
+        <span>🪘</span><div class="gn">Krishna</div>
+      </button>
+      <button class="guru-btn" data-guru="shiva" onclick="setGuru(this)">
+        <span>🔱</span><div class="gn">Shiva</div>
+      </button>
+      <button class="guru-btn" data-guru="buddha" onclick="setGuru(this)">
+        <span>🌸</span><div class="gn">Buddha</div>
+      </button>
+    </div>
+  </div>
+
+  <!-- Input -->
+  <div class="card fu fu3">
+    <label class="inp-lbl" for="q">Your Question · Sankalpa</label>
+    <textarea id="q" class="q-box" placeholder="What guidance do you seek today?" rows="3" onkeydown="handleKey(event)"></textarea>
+    <div class="chips" id="chips-row"></div>
+    <div class="err-box" id="err-box" role="alert"></div>
+    <button class="btn-invoke" id="invoke-btn" onclick="invoke()">✦&nbsp;&nbsp;Invoke Wisdom</button>
+  </div>
+
+  <!-- Sankalpa -->
+  <div class="sk-card" id="sk-card">
+    <div class="sk-hdr">
+      <div class="sk-title">🕯 Suggested Sankalpa</div>
+      <div class="sk-badge">Personal Intention</div>
+    </div>
+    <div class="sk-text" id="sk-text"></div>
+    <div class="sk-sub">Repeat 3× in meditation or write in your journal</div>
+    <div class="sk-acts">
+      <button class="btn-adopt" id="adopt-btn" onclick="adoptSankalpa()">🌸 Adopt</button>
+      <button class="ab" onclick="copySankalpa()" style="padding:7px 13px;font-size:12px">Copy</button>
+      <button class="ab voice" onclick="speakSankalpa()" style="padding:7px 13px;font-size:12px">🔊 Hear</button>
+    </div>
+  </div>
+
+  <!-- History -->
+  <div id="hist-wrap" class="fu fu4">
+    <div class="hist-lbl">Recent Queries</div>
+    <div class="hist-list" id="hist-list"></div>
+  </div>
+</div>
+
+<!-- RIGHT -->
+<div class="right">
+
+  <!-- Dashboard (idle) -->
+  <div class="dashboard" id="dashboard">
+    <div class="dash-top">
+      <div>
+        <div class="dash-greeting" id="dash-greeting">Good morning, Seeker 🌅</div>
+        <div class="dash-date" id="dash-date"></div>
+      </div>
+      <div>
+        <div class="dash-clock" id="dash-clock">00:00</div>
+        <div class="dash-clock-sub" id="dash-ampm">AM</div>
+      </div>
+    </div>
+    <div class="dash-streak">
+      <span style="font-size:20px">🔥</span>
+      <div class="streak-info">
+        <div class="streak-num" id="streak-num">0 Days</div>
+        <div class="streak-lbl">Sadhana Streak</div>
+      </div>
+      <div class="streak-bar"><div class="streak-fill" id="streak-fill" style="width:0%"></div></div>
+    </div>
+    <div class="dash-verse">
+      <div class="dash-sec-title">🪔 Verse of the Day</div>
+      <div class="verse-deva" id="daily-deva"></div>
+      <div class="verse-meaning" id="daily-meaning"></div>
+      <div class="verse-source" id="daily-source"></div>
+    </div>
+    <div class="dash-breath">
+      <div class="dash-sec-title">🌬 Pranayama · 4-7-8</div>
+      <div class="breath-wrap">
+        <div class="breath-ring">
+          <svg class="b-svg" viewBox="0 0 86 86">
+            <circle class="b-bg" cx="43" cy="43" r="38"/>
+            <circle class="b-arc" id="b-arc" cx="43" cy="43" r="38"/>
+          </svg>
+          <div class="b-lbl" id="b-lbl">Ready</div>
+        </div>
+        <div class="breath-info">
+          <div class="b-phase" id="b-phase">4-7-8 Breathing</div>
+          <div class="b-count" id="b-count">—</div>
+          <div class="b-desc">Inhale 4s · Hold 7s · Exhale 8s</div>
+          <div class="b-btns">
+            <button class="b-btn" id="b-start" onclick="toggleBreath()">▶ Start</button>
+            <button class="b-btn" onclick="resetBreath()">↺</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="dash-quick">
+      <div class="dash-q-lbl">Quick Invoke</div>
+      <div class="dash-chips" id="dash-chips"></div>
+    </div>
+  </div>
+
+  <!-- Viewport (sacred image) -->
+  <section class="viewport" id="viewport" style="display:none">
+    <img id="art" alt="Sacred Vedic art">
+    <div id="loader" role="status">
+      <div class="l-ring">
+        <svg viewBox="0 0 72 72" fill="none">
+          <circle cx="36" cy="36" r="32" stroke="#E8A030" stroke-width="1.2" stroke-dasharray="5 9"/>
+          <circle cx="36" cy="36" r="20" stroke="#F06820" stroke-width=".8" stroke-dasharray="3 6"/>
+          <polygon points="36,7 60,54 12,54" fill="none" stroke="#E8A030" stroke-width=".9"/>
+          <polygon points="36,65 60,18 12,18" fill="none" stroke="#D06890" stroke-width=".7"/>
+          <circle cx="36" cy="36" r="4.5" fill="#E8A030"/>
+        </svg>
+      </div>
+      <div class="l-txt">The cosmos is speaking…</div>
+    </div>
+  </section>
+
+  <!-- Yantra -->
+  <div class="yantra-panel" id="yantra-panel">
+    <div class="yantra-lbl">🔯 Healing Yantra · Generated for Your Query</div>
+    <svg id="healing-yantra" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg"></svg>
+    <div class="yantra-name" id="yantra-name"></div>
+    <div class="yantra-meaning" id="yantra-meaning"></div>
+  </div>
+
+  <!-- Result sections -->
+  <div class="rs sc sc-shloka" id="r-shloka">
+    <div class="sc-hdr"><span class="sc-icon">🪔</span><span class="sc-title">Sacred Shloka</span></div>
+    <div class="shloka-deva" id="shloka-deva"></div>
+    <div class="shloka-ref" id="shloka-ref"></div>
+  </div>
+  <div class="rs sc sc-meaning" id="r-meaning">
+    <div class="sc-hdr"><span class="sc-icon">🧠</span><span class="sc-title">Simple Meaning</span></div>
+    <div class="meaning-body" id="meaning-body"></div>
+  </div>
+  <div class="rs sc sc-insight" id="r-insight">
+    <div class="sc-hdr"><span class="sc-icon">✨</span><span class="sc-title">Deep Insight</span></div>
+    <div class="insight-body" id="insight-body"></div>
+  </div>
+  <div class="rs sc sc-action" id="r-action" style="margin-top:18px">
+    <div class="sc-hdr"><span class="sc-icon">🎯</span><span class="sc-title">Action for Today</span></div>
+    <div class="action-body" id="action-body"></div>
+    <div class="action-pill" id="action-pill" style="display:none">🌅 Practice</div>
+    <div class="save-row">
+      <button class="btn-save" id="save-btn" onclick="saveWisdom()">❤️ Save This</button>
+      <span class="save-count" id="save-count"></span>
+    </div>
+  </div>
+
+  <!-- Action buttons -->
+  <div class="act-row" id="act-row">
+    <button class="ab voice" id="voice-btn" onclick="toggleVoice()">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/><path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8a3.49 3.49 0 0 1-1.025 2.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/></svg>
+      🔊 Listen
+    </button>
+    <button class="ab share" onclick="openShareImage()">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M6.002 5.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/><path d="M1.5 2A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h13a1.5 1.5 0 0 0 1.5-1.5v-9A1.5 1.5 0 0 0 14.5 2h-13zm13 1a.5.5 0 0 1 .5.5v6l-3.775-1.947a.5.5 0 0 0-.577.093l-3.71 3.71-2.66-1.772a.5.5 0 0 0-.63.062L1.002 12v.54A.505.505 0 0 1 1 12.5v-9a.5.5 0 0 1 .5-.5h13z"/></svg>
+      Share Image
+    </button>
+    <button class="ab" id="copy-btn" onclick="doCopy()">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M4 2a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H6zM2 5a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1v-1H8v1H2V6h1V5H2z"/></svg>
+      Copy All
+    </button>
+    <button class="ab yt" onclick="openYTModal()">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M8.051 1.999h.089c.822.003 4.987.033 6.11.335a2.01 2.01 0 0 1 1.415 1.42c.101.38.172.883.22 1.402l.01.104.022.26.008.104c.065.914.073 1.77.074 1.957v.075c-.001.194-.01 1.108-.082 2.06l-.008.105-.009.104c-.05.572-.124 1.14-.235 1.558a2.007 2.007 0 0 1-1.415 1.42c-1.16.312-5.569.334-6.18.335h-.142c-.309 0-1.587-.006-2.927-.052l-.17-.006-.087-.004-.171-.007-.171-.007c-1.11-.049-2.167-.128-2.654-.26a2.007 2.007 0 0 1-1.415-1.419c-.111-.417-.185-.986-.235-1.558L.09 9.82l-.008-.104A31.4 31.4 0 0 1 0 7.68v-.123c.002-.215.01-.958.064-1.778l.007-.103.003-.052.008-.104.022-.26.01-.104c.048-.519.119-1.023.22-1.402a2.007 2.007 0 0 1 1.415-1.42c.487-.13 1.544-.21 2.654-.26l.17-.007.172-.006.086-.003.171-.007A99.788 99.788 0 0 1 7.858 2h.193zM6.4 5.209v4.818l4.157-2.408L6.4 5.209z"/></svg>
+      🎬 YT Script
+    </button>
+    <button class="ab" onclick="doNew()">↺ New</button>
+    <button class="ab" onclick="doShare()">
+      <svg viewBox="0 0 16 16" fill="currentColor"><path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5z"/></svg>
+      Share
+    </button>
+  </div>
+
+  <!-- Donation trigger (shown after value) -->
+  <div class="donate-trigger" id="donate-trigger">
+    <div class="dt-q">Did this bring you clarity today? 🙏</div>
+    <div class="dt-sub">Your support helps spread this wisdom to thousands of seekers worldwide</div>
+    <div class="dt-btns">
+      <button class="dt-btn-main" onclick="openDonate()">🙏 Support the Mission</button>
+      <button class="dt-btn-skip" onclick="this.closest('.donate-trigger').classList.remove('show')">Maybe later</button>
+    </div>
+  </div>
+
+</div><!-- .right -->
+</main>
+
+<footer>
+  <div class="footer-links">
+    <a href="#" onclick="openAbout();return false">About BODHA</a>
+    <a href="#">Privacy</a>
+    <a href="#">Terms</a>
+    <a href="#" onclick="openDonate();return false">Support 🙏</a>
+  </div>
+  BODHA · Find Clarity. Live with Dharma. · Ctrl+Enter to Invoke
+</footer>
+
+<!-- ══ SOUND BAR ══ -->
+<div class="sound-bar">
+  <div class="sb-modes">
+    <button class="sb-mode on" data-sound="healing" onclick="setSound(this)">🪘 Healing</button>
+    <button class="sb-mode" data-sound="bells" onclick="setSound(this)">🔔 Temple</button>
+    <button class="sb-mode" data-sound="river" onclick="setSound(this)">🌊 River</button>
+    <button class="sb-mode" data-sound="om" onclick="setSound(this)">🕉 Om</button>
+    <button class="sb-mode" data-sound="forest" onclick="setSound(this)">🌿 Forest</button>
+  </div>
+  <div class="sb-viz" id="sb-viz">
+    <div class="sbv" style="height:4px;--d:.55s"></div>
+    <div class="sbv" style="height:9px;--d:.72s"></div>
+    <div class="sbv" style="height:13px;--d:.60s"></div>
+    <div class="sbv" style="height:7px;--d:.84s"></div>
+    <div class="sbv" style="height:11px;--d:.66s"></div>
+    <div class="sbv" style="height:5px;--d:.78s"></div>
+    <div class="sbv" style="height:8px;--d:.58s"></div>
+  </div>
+  <div class="sb-vol">
+    <span class="sb-vol-lbl">🔈</span>
+    <input type="range" id="vol-slider" min="0" max="100" value="40" oninput="setVolume(this.value)">
+    <span class="sb-vol-lbl">🔊</span>
+  </div>
+  <div class="sb-freq">
+    <div class="sb-f on" data-freq="432" onclick="setFreq(this)">432Hz</div>
+    <div class="sb-f" data-freq="528" onclick="setFreq(this)">528Hz</div>
+    <div class="sb-f" data-freq="396" onclick="setFreq(this)">396Hz</div>
+  </div>
+  <button class="sb-play" id="sb-play" onclick="toggleSound()">▶ Play</button>
+</div>
+
+<!-- ══ MODALS ══ -->
+
+<!-- YT Script -->
+<div class="modal-ov" id="yt-modal" onclick="closeModal('yt-modal',event)">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal('yt-modal')">✕</button>
+    <div class="modal-title">🎬 YouTube Script Generator</div>
+    <div class="modal-sub">Transform your wisdom response into a viral spiritual video script</div>
+    <div class="script-out" id="script-out">Generate wisdom first, then create your script here.</div>
+    <div class="modal-acts">
+      <button class="ab" id="gen-btn" onclick="generateScript()">✦ Generate Script</button>
+      <button class="ab" onclick="copyScript()">Copy</button>
+      <button class="ab voice" onclick="readScript()">🔊 Read Aloud</button>
+    </div>
+  </div>
+</div>
+
+<!-- Share Image -->
+<div class="modal-ov" id="share-modal" onclick="closeModal('share-modal',event)">
+  <div class="modal-box" style="max-width:420px;text-align:center">
+    <button class="modal-x" onclick="closeModal('share-modal')">✕</button>
+    <div class="modal-title">📱 Share as Image</div>
+    <div class="modal-sub">Instagram-ready wisdom card with BODHA branding</div>
+    <canvas id="share-canvas" style="display:none"></canvas>
+    <img id="share-preview" class="share-preview" alt="Wisdom card preview" style="display:none">
+    <div style="margin-bottom:16px;font-size:var(--sm);color:var(--moon-35);font-style:italic" id="share-gen-msg">Generating your card…</div>
+    <div class="modal-acts" style="justify-content:center">
+      <button class="ab share" id="dl-btn" onclick="downloadShareImage()" style="display:none">⬇ Download PNG</button>
+      <button class="ab" onclick="doShare()">🔗 Share Link</button>
+    </div>
+  </div>
+</div>
+
+<!-- Wisdom Library -->
+<div class="modal-ov" id="wl-modal" onclick="closeModal('wl-modal',event)">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal('wl-modal')">✕</button>
+    <div class="modal-title">📚 My Wisdom Library</div>
+    <div class="modal-sub">Your saved insights — return to these anytime</div>
+    <div class="wl-grid" id="wl-grid">
+      <div style="text-align:center;padding:30px;color:var(--moon-35);font-style:italic">No saved wisdom yet. Invoke and tap ❤️ Save to build your library.</div>
+    </div>
+    <button class="ab" onclick="clearLibrary()" style="font-size:12px;color:var(--moon-35)">🗑 Clear All</button>
+  </div>
+</div>
+
+<!-- Donate -->
+<div class="modal-ov" id="donate-modal" onclick="closeModal('donate-modal',event)">
+  <div class="modal-box" style="max-width:480px">
+    <button class="modal-x" onclick="closeModal('donate-modal')">✕</button>
+    <div class="modal-title" style="color:var(--lotus)">🙏 Support BODHA</div>
+    <div class="modal-sub">Help preserve ancient wisdom for all seekers, forever free</div>
+    <div class="dm-verse">"Jnana yajnena chapy anye yajanto mam upasate"<br><span style="font-size:var(--sm);color:var(--moon-35);margin-top:5px;display:block">— Bhagavad Gita 9.15 · Others worship through the sacrifice of knowledge</span></div>
+    <div class="dm-impact"><strong>Your support</strong> helps us preserve rare texts, add new features, and guide millions of seekers worldwide — always free, always sacred, never ads.</div>
+    <div class="dm-upi">
+      <span style="font-size:28px">📱</span>
+      <div>
+        <div style="color:var(--moon-85);font-weight:500;margin-bottom:3px">UPI Payment</div>
+        <div style="color:var(--gold);font-style:italic;font-size:var(--base)">bodha@upi</div>
+        <button class="ab" style="margin-top:7px;padding:6px 13px;font-size:12px" onclick="copyUPI()">Copy UPI ID</button>
+      </div>
+    </div>
+    <button style="width:100%;padding:15px;border:none;border-radius:50px;background:linear-gradient(135deg,#7a1850,var(--lotus),#b04888);color:#fff;font-family:'DM Sans';font-size:12px;font-weight:600;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:all .33s;box-shadow:0 8px 28px rgba(208,104,144,.26)" onclick="closeModal('donate-modal')">🙏 Thank You · Namaste</button>
+  </div>
+</div>
+
+<!-- About -->
+<div class="modal-ov" id="about-modal" onclick="closeModal('about-modal',event)">
+  <div class="modal-box">
+    <button class="modal-x" onclick="closeModal('about-modal')">✕</button>
+    <div class="modal-title">About BODHA</div>
+    <div class="about-section">
+      <h3>Our Mission</h3>
+      <p>BODHA bridges 5,000 years of Vedic wisdom with the clarity of neural intelligence. We believe ancient truth should guide every modern life — freely, beautifully, and without barrier.</p>
+    </div>
+    <div class="about-section">
+      <h3>Sacred Sources</h3>
+      <p>Our wisdom draws from the Bhagavad Gita, Upanishads (Chandogya, Brihadaranyaka, Mundaka), Rigveda, Dhammapada, Patanjali Yoga Sutras, and the oral traditions of India's great Rishis.</p>
+    </div>
+    <div class="about-section">
+      <h3>Three AI Gurus</h3>
+      <p><strong style="color:var(--guru-k)">Krishna</strong> — guides through strategy, dharma, and right action in the world.<br>
+      <strong style="color:var(--guru-s)">Shiva</strong> — teaches detachment, stillness, and inner transformation.<br>
+      <strong style="color:var(--guru-b)">Buddha</strong> — offers peace, mindfulness, and compassionate awareness.</p>
+    </div>
+    <div class="about-section">
+      <h3>Sound Healing</h3>
+      <p>All sounds are synthesized using sacred frequencies — 432Hz (Vedic harmony), 528Hz (love/healing), 396Hz (liberation from fear). No external files are downloaded.</p>
+    </div>
+    <div style="font-size:var(--sm);color:var(--moon-35);text-align:center;padding-top:16px;border-top:1px solid var(--bdr);font-style:italic">BODHA V11 · Built with reverence · Free forever</div>
+  </div>
+</div>
+
+<!-- Night Reflection -->
+<div class="modal-ov" id="reflect-modal" onclick="closeModal('reflect-modal',event)">
+  <div class="modal-box" style="max-width:500px">
+    <button class="modal-x" onclick="closeModal('reflect-modal')">✕</button>
+    <div class="modal-title" style="color:var(--ame)">🌙 Evening Reflection</div>
+    <div class="modal-sub">End your day with awareness. What brought peace today?</div>
+    <textarea class="reflect-ta" id="reflect-ta" placeholder="Write freely… what wisdom touched you today? What will you let go of?" rows="5"></textarea>
+    <div style="display:flex;gap:9px">
+      <button class="ab" onclick="saveReflection()" style="flex:1;justify-content:center">💾 Save Reflection</button>
+      <button class="ab voice" onclick="speakReflectionPrompt()">🔊 Hear Prompt</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+
+/* ══════════════════════════════════════════════════════
+   STARS
+══════════════════════════════════════════════════════ */
+(function(){
+  const C=document.getElementById('stars'),ctx=C.getContext('2d');let S=[];
+  function resize(){
+    C.width=window.innerWidth;C.height=window.innerHeight;
+    S=Array.from({length:200},()=>({x:Math.random()*C.width,y:Math.random()*C.height,r:Math.random()*.8+.14,a:Math.random(),da:(Math.random()-.5)*.004,warm:Math.random()>.78}));
+  }
+  function draw(){
+    ctx.clearRect(0,0,C.width,C.height);
+    S.forEach(s=>{s.a+=s.da;if(s.a<.04||s.a>1)s.da*=-1;ctx.beginPath();ctx.arc(s.x,s.y,s.r,0,Math.PI*2);ctx.fillStyle=s.warm?`rgba(248,192,80,${s.a.toFixed(2)})`:`rgba(220,200,160,${(s.a*.5).toFixed(2)})`;ctx.fill();});
+    requestAnimationFrame(draw);
+  }
+  resize();draw();window.addEventListener('resize',resize);
+})();
+
+/* ══════════════════════════════════════════════════════
+   PREFERENCES (localStorage)
+══════════════════════════════════════════════════════ */
+function getPref(k,def){try{const v=localStorage.getItem('bodha_'+k);return v!==null?JSON.parse(v):def;}catch{return def;}}
+function setPref(k,v){try{localStorage.setItem('bodha_'+k,JSON.stringify(v));}catch{}}
+
+/* ══════════════════════════════════════════════════════
+   ONBOARDING
+══════════════════════════════════════════════════════ */
+let obSeeking=null,obGuruSel=null;
+function checkOnboard(){
+  if(getPref('onboarded',false)){
+    document.getElementById('onboard').classList.add('hidden');
+    applyPreferences();
+  }
+}
+function obSelect(el,key){
+  el.closest('.ob-opts').querySelectorAll('.ob-opt').forEach(e=>e.classList.remove('sel'));
+  el.classList.add('sel');
+  obSeeking=el.dataset.val;
+}
+function obSelectGuru(el){
+  document.querySelectorAll('.ob-guru').forEach(e=>e.classList.remove('sel'));
+  el.classList.add('sel');
+  obGuruSel=el.dataset.guru;
+}
+function obNext(){
+  if(!obSeeking){showToast('Please select what you seek','err');return;}
+  setPref('seeking',obSeeking);
+  document.getElementById('ob-step1').classList.remove('active');
+  document.getElementById('ob-step2').classList.add('active');
+}
+function obFinish(){
+  if(!obGuruSel){obGuruSel='krishna';}
+  setPref('guru',obGuruSel);
+  setPref('onboarded',true);
+  document.getElementById('onboard').classList.add('hidden');
+  currentGuru=obGuruSel;
+  applyGuruUI();
+  applySeekingChips();
+  showToast('Welcome to BODHA. Begin your journey. 🙏','ok');
+}
+function obSkip(){setPref('onboarded',true);document.getElementById('onboard').classList.add('hidden');applyPreferences();}
+function applyPreferences(){
+  const g=getPref('guru','krishna');currentGuru=g;applyGuruUI();
+  applySeekingChips();
+}
+
+/* ══════════════════════════════════════════════════════
+   GURU MODE
+══════════════════════════════════════════════════════ */
+let currentGuru='krishna';
+const GURU_DATA={
+  krishna:{icon:'🪘',name:'Krishna',cls:'active-k',col:'var(--guru-k)',
+    prompt:'You are BODHA embodying Lord Krishna — master of strategy, Dharma, and right action. You guide through the Bhagavad Gita\'s wisdom. Your tone is decisive, wise, and empowering. You speak like a loving friend who is also a great warrior-sage.'},
+  shiva:{icon:'🔱',name:'Shiva',cls:'active-s',col:'var(--guru-s)',
+    prompt:'You are BODHA embodying Lord Shiva — the consciousness of stillness, detachment, and transformation. You guide through letting go, inner power, and pure awareness. Your tone is calm, profound, and detached yet deeply compassionate.'},
+  buddha:{icon:'🌸',name:'Buddha',cls:'active-b',col:'var(--guru-b)',
+    prompt:'You are BODHA embodying the Buddha — teacher of mindfulness, compassion, and liberation from suffering. You guide through the Dhammapada and Buddhist wisdom. Your tone is gentle, peaceful, and deeply present.'}
+};
+function setGuru(el){
+  const guru=el.dataset.guru;currentGuru=guru;setPref('guru',guru);
+  document.querySelectorAll('.guru-btn').forEach(b=>{b.className='guru-btn';});
+  el.classList.add(GURU_DATA[guru].cls);
+  applyGuruUI();
+  soundClick();
+}
+function applyGuruUI(){
+  const d=GURU_DATA[currentGuru]||GURU_DATA.krishna;
+  document.getElementById('guru-icon').textContent=d.icon;
+  document.getElementById('guru-nav-name').textContent=d.name;
+  // Sync buttons
+  document.querySelectorAll('.guru-btn').forEach(b=>{b.className='guru-btn';if(b.dataset.guru===currentGuru)b.classList.add(d.cls);});
+}
+function showGuruPicker(){document.querySelector('.guru-row').scrollIntoView({behavior:'smooth',block:'center'});}
+
+/* ══════════════════════════════════════════════════════
+   INTENT BUTTONS
+══════════════════════════════════════════════════════ */
+const INTENT_QUERIES={
+  peace:['I feel anxious and restless','How do I find inner peace?','My mind won\'t calm down','Guide me to stillness'],
+  problem:['Relationship conflict','Career confusion','Family tension','I need guidance on a tough decision'],
+  clarity:['What is my life purpose?','Should I change my career?','Help me gain clarity on my situation','What does Dharma mean for me?'],
+  learning:['What is Moksha?','Explain Bhagavad Gita 2.47','What is Brahman?','The path of Bhakti Yoga']
+};
+const INTENT_PH={
+  peace:'How are you feeling right now? Describe your inner state…',
+  problem:'Describe your situation openly. The Guru listens without judgment…',
+  clarity:'What decision or question needs clarity?',
+  learning:'Which concept, scripture or philosophy calls to you?'
+};
+function setIntent(el){
+  document.querySelectorAll('.intent-btn').forEach(b=>b.classList.remove('active'));
+  el.classList.add('active');
+  const intent=el.dataset.intent;
+  document.getElementById('q').placeholder=INTENT_PH[intent];
+  buildChipsFrom(INTENT_QUERIES[intent]);
+  soundClick();
+}
+function applySeekingChips(){
+  const seeking=getPref('seeking','peace');
+  const btn=document.querySelector(`.intent-btn[data-intent="${seeking}"]`);
+  if(btn){btn.classList.add('active');document.getElementById('q').placeholder=INTENT_PH[seeking]||INTENT_PH.peace;buildChipsFrom(INTENT_QUERIES[seeking]||[]);}
+}
+let currentChips=[];
+function buildChipsFrom(arr){
+  currentChips=arr;
+  const row=document.getElementById('chips-row');row.innerHTML='';
+  arr.forEach(txt=>{
+    const el=document.createElement('div');el.className='chip';el.textContent=txt;
+    el.setAttribute('role','button');el.setAttribute('tabindex','0');
+    const go=()=>{document.getElementById('q').value=txt;invoke();};
+    el.addEventListener('click',go);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')go();});
+    row.appendChild(el);
+  });
+}
+function buildChips(){buildChipsFrom(currentChips.length?currentChips:INTENT_QUERIES.peace);}
+
+/* ══════════════════════════════════════════════════════
+   DASHBOARD
+══════════════════════════════════════════════════════ */
+const DAILY_VERSES=[
+  {deva:'कर्म कर फल की चिन्ता मत कर',meaning:'Do your duty without attachment to results.',source:'Bhagavad Gita 2.47'},
+  {deva:'सर्वे भवन्तु सुखिनः',meaning:'May all beings be happy, free from disease and suffering.',source:'Brihadaranyaka Upanishad'},
+  {deva:'तत्त्वमसि',meaning:'Thou art That — you and the infinite cosmos are one.',source:'Chandogya Upanishad 6.8.7'},
+  {deva:'अहं ब्रह्मास्मि',meaning:'I am Brahman — the eternal, infinite consciousness.',source:'Brihadaranyaka Upanishad 1.4.10'},
+  {deva:'ॐ शान्तिः शान्तिः शान्तिः',meaning:'Om. Peace in body, peace in mind, peace in spirit.',source:'Vedic Invocation'},
+  {deva:'सत्यमेव जयते',meaning:'Truth alone triumphs — never falsehood.',source:'Mundaka Upanishad 3.1.6'},
+  {deva:'योगः कर्मसु कौशलम्',meaning:'Yoga is excellence in all your actions — full presence.',source:'Bhagavad Gita 2.50'}
+];
+const QUICK_CHIPS=['What is Dharma?','Morning mantra','I feel anxious','Path of Bhakti','Evening reflection','What is Maya?'];
+
+function initDashboard(){
+  const dc=document.getElementById('dash-chips');
+  QUICK_CHIPS.forEach(txt=>{
+    const el=document.createElement('div');el.className='d-chip';el.textContent=txt;
+    el.onclick=()=>{document.getElementById('q').value=txt;invoke();};
+    dc.appendChild(el);
+  });
+  const doy=Math.floor((Date.now()-new Date(new Date().getFullYear(),0,0))/86400000);
+  const v=DAILY_VERSES[doy%DAILY_VERSES.length];
+  document.getElementById('daily-deva').textContent=v.deva;
+  document.getElementById('daily-meaning').textContent=v.meaning;
+  document.getElementById('daily-source').textContent='— '+v.source;
+  updateClock();setInterval(updateClock,1000);
+  loadStreak();
+  checkNightPrompt();
+}
+function updateClock(){
+  const now=new Date();const h=now.getHours(),m=now.getMinutes(),s=now.getSeconds();
+  const h12=h%12||12;
+  document.getElementById('dash-clock').textContent=String(h12).padStart(2,'0')+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
+  document.getElementById('dash-ampm').textContent=h<12?'AM':'PM';
+  const days=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months=['January','February','March','April','May','June','July','August','September','October','November','December'];
+  document.getElementById('dash-date').textContent=days[now.getDay()]+', '+months[now.getMonth()]+' '+now.getDate()+', '+now.getFullYear();
+  const icons={5:'🌅',6:'🌅',7:'🌤',8:'☀️',9:'☀️',10:'☀️',11:'☀️',12:'🌞',13:'🌞',14:'🌞',15:'🌤',16:'🌆',17:'🌆',18:'🌇',19:'🌙',20:'🌙',21:'🌙',22:'🌙',23:'🌙'};
+  const icon=icons[h]||'🌙';
+  const g=h<5?'Good night':h<12?'Good morning':h<17?'Good afternoon':h<21?'Good evening':'Good night';
+  document.getElementById('dash-greeting').textContent=g+', Seeker '+icon;
+}
+
+/* ══════════════════════════════════════════════════════
+   STREAK
+══════════════════════════════════════════════════════ */
+function loadStreak(){
+  const data=getPref('streak',{});const streak=data.streak||0;
+  updateStreakUI(streak);
+}
+function incrementStreak(){
+  const data=getPref('streak',{});const today=new Date().toDateString();const yesterday=new Date(Date.now()-86400000).toDateString();
+  let streak=data.streak||0;
+  if(data.last===today)return;
+  streak=(data.last===yesterday)?streak+1:1;
+  setPref('streak',{streak,last:today});
+  updateStreakUI(streak);
+  if(streak>0&&streak%7===0)showToast('🎉 '+streak+'-day Sadhana streak! You are devoted.','ok');
+}
+function updateStreakUI(streak){
+  document.getElementById('streak-num').textContent=streak+' Day'+(streak!==1?'s':'');
+  document.getElementById('streak-fill').style.width=Math.min(streak/30,1)*100+'%';
+  document.getElementById('streak-nav-n').textContent=streak;
+  if(streak>0)document.getElementById('streak-badge').classList.add('show');
+}
+
+/* ══════════════════════════════════════════════════════
+   BREATH GUIDE
+══════════════════════════════════════════════════════ */
+let breathRunning=false,breathTimer=null,breathPhase=0,breathSec=0;
+const BPH=[{name:'Inhale',dur:4,col:'var(--jade)',desc:'Breathe in slowly…'},{name:'Hold',dur:7,col:'var(--gold)',desc:'Hold gently…'},{name:'Exhale',dur:8,col:'var(--sky)',desc:'Release fully…'}];
+const BARC=240;
+function toggleBreath(){breathRunning?pauseBreath():startBreath();}
+function startBreath(){breathRunning=true;document.getElementById('b-start').textContent='⏸ Pause';document.getElementById('b-start').classList.add('on');tickBreath();}
+function pauseBreath(){breathRunning=false;clearTimeout(breathTimer);document.getElementById('b-start').textContent='▶ Resume';document.getElementById('b-start').classList.remove('on');}
+function resetBreath(){clearTimeout(breathTimer);breathRunning=false;breathPhase=0;breathSec=0;document.getElementById('b-start').textContent='▶ Start';document.getElementById('b-start').classList.remove('on');document.getElementById('b-phase').textContent='4-7-8 Breathing';document.getElementById('b-count').textContent='—';document.getElementById('b-lbl').textContent='Ready';document.getElementById('b-arc').style.strokeDashoffset=BARC;document.getElementById('b-arc').style.stroke='var(--sky)';}
+function tickBreath(){
+  if(!breathRunning)return;
+  const ph=BPH[breathPhase];
+  document.getElementById('b-phase').textContent=ph.name;document.getElementById('b-count').textContent=ph.dur-breathSec;
+  document.getElementById('b-lbl').textContent=ph.name+'\n'+(ph.dur-breathSec)+'s';
+  document.getElementById('b-arc').style.stroke=ph.col;
+  document.getElementById('b-arc').style.strokeDashoffset=BARC-(BARC*(breathSec/ph.dur));
+  breathSec++;if(breathSec>ph.dur){breathSec=0;breathPhase=(breathPhase+1)%3;}
+  breathTimer=setTimeout(tickBreath,1000);
+}
+
+/* ══════════════════════════════════════════════════════
+   SOUND ENGINE (Web Audio — all synthesized, no files)
+══════════════════════════════════════════════════════ */
+let audioCtx=null,soundPlaying=false,soundMode='healing',soundGain=null,soundNodes=[],freqBase=432;
+let ambientNodes=[],bellTimer=null;
+
+function initAudio(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();}
+
+function toggleSound(){
+  initAudio();
+  if(soundPlaying){stopSound();}else{startSound();}
+}
+
+function startSound(){
+  if(!audioCtx)initAudio();
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  stopSound();
+  soundPlaying=true;
+  if(soundMode==='healing')buildHealingMusic();
+  else if(soundMode==='bells')buildTempleAmbient();
+  else if(soundMode==='river')buildRiverAmbient();
+  else if(soundMode==='om')buildOmAmbient();
+  else if(soundMode==='forest')buildForestAmbient();
+  updateSoundUI(true);
+}
+
+function stopSound(){
+  if(soundGain){soundGain.gain.linearRampToValueAtTime(0,audioCtx.currentTime+2);setTimeout(()=>{soundNodes.forEach(n=>{try{if(n.osc)n.osc.stop();if(n.src)n.src.stop();}catch(e){}});soundNodes=[];soundGain=null;},2200);}
+  clearTimeout(bellTimer);soundPlaying=false;updateSoundUI(false);
+}
+
+function setSound(el){
+  document.querySelectorAll('.sb-mode').forEach(b=>b.classList.remove('on'));el.classList.add('on');
+  soundMode=el.dataset.sound;
+  if(soundPlaying){stopSound();setTimeout(()=>startSound(),800);}
+  soundClick();
+}
+
+function setVolume(v){
+  const vol=v/100*0.08;
+  if(soundGain)soundGain.gain.setTargetAtTime(vol,audioCtx.currentTime,.1);
+}
+
+function setFreq(el){
+  document.querySelectorAll('.sb-f').forEach(f=>f.classList.remove('on'));el.classList.add('on');
+  freqBase=parseInt(el.dataset.freq);
+  if(soundPlaying&&soundMode==='healing'){stopSound();setTimeout(()=>startSound(),600);}
+}
+
+function updateSoundUI(on){
+  const btn=document.getElementById('sb-play'),bars=document.querySelectorAll('.sbv');
+  if(on){btn.textContent='⏸ Pause';btn.classList.add('on');bars.forEach(b=>b.classList.add('on'));}
+  else{btn.textContent='▶ Play';btn.classList.remove('on');bars.forEach(b=>b.classList.remove('on'));}
+}
+
+/* ── HEALING MUSIC (Tanpura + Bell Melody + Tabla) ── */
+function buildHealingMusic(){
+  const master=audioCtx.createGain();
+  master.gain.setValueAtTime(0,audioCtx.currentTime);
+  master.gain.linearRampToValueAtTime(0.045,audioCtx.currentTime+5);
+  master.connect(audioCtx.destination);
+  soundGain=master;
+
+  const warm=audioCtx.createBiquadFilter();warm.type='lowpass';warm.frequency.value=1200;warm.Q.value=0.4;warm.connect(master);
+  const rev=audioCtx.createDelay(3);rev.delayTime.value=1.8;
+  const revG=audioCtx.createGain();revG.gain.value=0.14;rev.connect(revG);revG.connect(rev);revG.connect(warm);
+
+  // Tanpura drone
+  const baseF=freqBase===528?528:freqBase===396?396:432;
+  const harmonics=[baseF/4,baseF/2,baseF,baseF*1.5,baseF*2,baseF*3];
+  harmonics.forEach((f,i)=>{
+    [-0.8,-0.3,0,0.3,0.8].forEach(dt=>{
+      const osc=audioCtx.createOscillator();const g=audioCtx.createGain();
+      osc.type=i<2?'sawtooth':'sine';osc.frequency.value=f+dt;
+      g.gain.value=Math.max(0.001,(0.032-i*0.004));
+      osc.connect(g);g.connect(rev);g.connect(warm);osc.start();soundNodes.push({osc,gain:g});
+    });
+  });
+
+  // Bell melody
+  const mel=[baseF,baseF*9/8,baseF*5/4,baseF*4/3,baseF*3/2,baseF*5/3,baseF*15/8,baseF*2];
+  let schedT=audioCtx.currentTime+2;
+  function schMel(){
+    if(!soundPlaying)return;
+    const pats=[[0,2,4,2,0,4,6,4],[1,3,5,3,1,5,7,5]];
+    const pat=pats[Math.floor(Math.random()*pats.length)];
+    const BEAT=2.2;
+    pat.forEach((ni,i)=>{
+      const t=schedT+i*BEAT;
+      const osc1=audioCtx.createOscillator();const osc2=audioCtx.createOscillator();
+      const env=audioCtx.createGain();
+      osc1.frequency.value=mel[ni];osc1.type='sine';
+      osc2.frequency.value=mel[ni]*2.756;osc2.type='sine';
+      const vol=(i===0||i===4)?0.022:0.012;
+      env.gain.setValueAtTime(0,t);env.gain.linearRampToValueAtTime(vol,t+0.008);
+      env.gain.exponentialRampToValueAtTime(0.0001,t+2.5);
+      osc1.connect(env);osc2.connect(env);env.connect(rev);env.connect(warm);
+      osc1.start(t);osc2.start(t);osc1.stop(t+3);osc2.stop(t+3);
+    });
+    schedT+=pat.length*BEAT;
+    setTimeout(schMel,(pat.length*BEAT-1.5)*1000);
+  }
+  schMel();
+
+  // Tabla pulse
+  let tT=audioCtx.currentTime+1;const TAL=3.2;
+  function schTabla(){
+    if(!soundPlaying)return;
+    [[180,0,0.015],[240,TAL*.35,0.009],[160,TAL*.5,0.012],[220,TAL*.75,0.007]].forEach(([f,dt,v])=>{
+      const osc=audioCtx.createOscillator();const env=audioCtx.createGain();
+      osc.frequency.setValueAtTime(f,tT+dt);osc.frequency.exponentialRampToValueAtTime(f*.5,tT+dt+.18);
+      env.gain.setValueAtTime(v,tT+dt);env.gain.exponentialRampToValueAtTime(0.0001,tT+dt+.18);
+      osc.connect(env);env.connect(warm);osc.start(tT+dt);osc.stop(tT+dt+.2);
+    });
+    tT+=TAL;setTimeout(schTabla,(TAL-.5)*1000);
+  }
+  schTabla();
+
+  const lfo=audioCtx.createOscillator();lfo.frequency.value=0.07;const lfoG=audioCtx.createGain();lfoG.gain.value=0.01;lfo.connect(lfoG);lfoG.connect(master.gain);lfo.start();soundNodes.push({osc:lfo,gain:lfoG});
+}
+
+/* ── TEMPLE BELLS ── */
+function buildTempleAmbient(){
+  const master=audioCtx.createGain();master.gain.setValueAtTime(0,audioCtx.currentTime);master.gain.linearRampToValueAtTime(0.04,audioCtx.currentTime+3);master.connect(audioCtx.destination);soundGain=master;
+  const warm=audioCtx.createBiquadFilter();warm.type='lowpass';warm.frequency.value=3000;warm.connect(master);
+  // Low drone under bells
+  const drone=audioCtx.createOscillator();const dg=audioCtx.createGain();drone.frequency.value=110;drone.type='sine';dg.gain.value=0.018;drone.connect(dg);dg.connect(warm);drone.start();soundNodes.push({osc:drone,gain:dg});
+  function strike(){
+    if(!soundPlaying)return;
+    const t=audioCtx.currentTime;
+    const baseF=400+Math.random()*600;
+    [1,2.76,5.4].forEach((mult,i)=>{
+      const osc=audioCtx.createOscillator();const env=audioCtx.createGain();
+      osc.frequency.value=baseF*mult;osc.type='sine';
+      const vol=(0.028/(i+1));
+      env.gain.setValueAtTime(0,t);env.gain.linearRampToValueAtTime(vol,t+0.008);env.gain.exponentialRampToValueAtTime(0.0001,t+3+i);
+      osc.connect(env);env.connect(warm);osc.start(t);osc.stop(t+4+i);
+    });
+    bellTimer=setTimeout(strike,3000+Math.random()*7000);
+  }
+  strike();
+}
+
+/* ── RIVER FLOW ── */
+function buildRiverAmbient(){
+  const master=audioCtx.createGain();master.gain.setValueAtTime(0,audioCtx.currentTime);master.gain.linearRampToValueAtTime(0.035,audioCtx.currentTime+4);master.connect(audioCtx.destination);soundGain=master;
+  const bufSize=audioCtx.sampleRate*3;const buf=audioCtx.createBuffer(1,bufSize,audioCtx.sampleRate);
+  const data=buf.getChannelData(0);let last=0;
+  for(let i=0;i<bufSize;i++){const w=(Math.random()*2-1);data[i]=(last+0.02*w)/1.02;last=data[i];data[i]*=3.5;}
+  const src=audioCtx.createBufferSource();src.buffer=buf;src.loop=true;
+  const bp=audioCtx.createBiquadFilter();bp.type='bandpass';bp.frequency.value=600;bp.Q.value=0.5;
+  const lfo=audioCtx.createOscillator();lfo.frequency.value=0.12;const lfoG=audioCtx.createGain();lfoG.gain.value=220;lfo.connect(lfoG);lfoG.connect(bp.frequency);lfo.start();
+  src.connect(bp);bp.connect(master);src.start();soundNodes.push({src,osc:lfo,gain:master});
+}
+
+/* ── OM CHANT ── */
+function buildOmAmbient(){
+  const master=audioCtx.createGain();master.gain.setValueAtTime(0,audioCtx.currentTime);master.gain.linearRampToValueAtTime(0.04,audioCtx.currentTime+5);master.connect(audioCtx.destination);soundGain=master;
+  [136.1,272.2,408.3,544.4,680.5].forEach((f,i)=>{
+    const osc=audioCtx.createOscillator();const g=audioCtx.createGain();
+    osc.frequency.value=f+(Math.random()-.5)*.4;osc.type='sine';
+    g.gain.value=(0.055/(i+1));
+    const lfo=audioCtx.createOscillator();lfo.frequency.value=0.1+i*0.01;const lg=audioCtx.createGain();lg.gain.value=g.gain.value*.3;lfo.connect(lg);lg.connect(g.gain);lfo.start();
+    osc.connect(g);g.connect(master);osc.start();soundNodes.push({osc,gain:g});soundNodes.push({osc:lfo,gain:lg});
+  });
+}
+
+/* ── FOREST AMBIENCE ── */
+function buildForestAmbient(){
+  const master=audioCtx.createGain();master.gain.setValueAtTime(0,audioCtx.currentTime);master.gain.linearRampToValueAtTime(0.04,audioCtx.currentTime+4);master.connect(audioCtx.destination);soundGain=master;
+  const bufSize=audioCtx.sampleRate*4;const buf=audioCtx.createBuffer(2,bufSize,audioCtx.sampleRate);
+  for(let ch=0;ch<2;ch++){const d=buf.getChannelData(ch);for(let i=0;i<bufSize;i++)d[i]=(Math.random()*2-1)*0.28;}
+  const src=audioCtx.createBufferSource();src.buffer=buf;src.loop=true;
+  const hp=audioCtx.createBiquadFilter();hp.type='highpass';hp.frequency.value=1800;hp.Q.value=0.3;
+  const lp=audioCtx.createBiquadFilter();lp.type='lowpass';lp.frequency.value=180;
+  const gH=audioCtx.createGain();gH.gain.value=0.14;const gL=audioCtx.createGain();gL.gain.value=0.07;
+  const wind=audioCtx.createOscillator();wind.frequency.value=0.06;const wG=audioCtx.createGain();wG.gain.value=0.04;wind.connect(wG);wG.connect(gH.gain);wind.start();
+  src.connect(hp);src.connect(lp);hp.connect(gH);lp.connect(gL);gH.connect(master);gL.connect(master);src.start();soundNodes.push({src,osc:wind,gain:master});
+  // Occasional bird chirp
+  function chirp(){
+    if(!soundPlaying)return;
+    const t=audioCtx.currentTime;const f=1800+Math.random()*1200;
+    const osc=audioCtx.createOscillator();const env=audioCtx.createGain();
+    osc.frequency.setValueAtTime(f,t);osc.frequency.linearRampToValueAtTime(f*1.3,t+.08);osc.type='sine';
+    env.gain.setValueAtTime(0,t);env.gain.linearRampToValueAtTime(0.014,t+.02);env.gain.exponentialRampToValueAtTime(0.0001,t+.25);
+    osc.connect(env);env.connect(master);osc.start(t);osc.stop(t+.3);
+    bellTimer=setTimeout(chirp,3000+Math.random()*9000);
+  }
+  setTimeout(chirp,2000);
+}
+
+function ensureSoundPlaying(){if(!soundPlaying){initAudio();startSound();}}
+
+/* ── SMART SOUND SYNC ── */
+let sfxCtx=null;
+function initSfx(){if(!sfxCtx)sfxCtx=new(window.AudioContext||window.webkitAudioContext)();}
+function soundClick(){
+  try{initSfx();if(sfxCtx.state==='suspended')sfxCtx.resume();
+    const osc=sfxCtx.createOscillator();const g=sfxCtx.createGain();
+    osc.frequency.value=660;osc.type='sine';g.gain.setValueAtTime(0.022,sfxCtx.currentTime);g.gain.exponentialRampToValueAtTime(0.0001,sfxCtx.currentTime+.05);
+    osc.connect(g);g.connect(sfxCtx.destination);osc.start();osc.stop(sfxCtx.currentTime+.06);}catch(e){}
+}
+function soundArrival(){
+  try{initSfx();if(sfxCtx.state==='suspended')sfxCtx.resume();
+    const t=sfxCtx.currentTime;
+    [528,660,792].forEach((f,i)=>{
+      const osc=sfxCtx.createOscillator();const g=sfxCtx.createGain();
+      osc.frequency.value=f;osc.type='sine';const st=t+i*.15;
+      g.gain.setValueAtTime(0,st);g.gain.linearRampToValueAtTime(0.025,st+.015);g.gain.exponentialRampToValueAtTime(0.0001,st+.9);
+      osc.connect(g);g.connect(sfxCtx.destination);osc.start(st);osc.stop(st+1);
+    });}catch(e){}
+}
+function soundComplete(){
+  try{initSfx();if(sfxCtx.state==='suspended')sfxCtx.resume();
+    const t=sfxCtx.currentTime;
+    [396,528,660].forEach((f,i)=>{
+      const osc=sfxCtx.createOscillator();const g=sfxCtx.createGain();
+      osc.frequency.value=f;osc.type='sine';const st=t+i*.12;
+      g.gain.setValueAtTime(0,st);g.gain.linearRampToValueAtTime(0.018,st+.01);g.gain.exponentialRampToValueAtTime(0.0001,st+1.2);
+      osc.connect(g);g.connect(sfxCtx.destination);osc.start(st);osc.stop(st+1.3);
+    });}catch(e){}
+}
+
+/* ══════════════════════════════════════════════════════
+   VOICE — Meditative & Human
+══════════════════════════════════════════════════════ */
+let voiceActive=false;
+function pickVoice(){
+  const voices=window.speechSynthesis.getVoices();
+  const pref=['Google UK English Female','Samantha','Karen','Moira','Tessa','Microsoft Zira'];
+  for(const n of pref){const v=voices.find(v=>v.name.includes(n));if(v)return v;}
+  return voices.find(v=>v.lang.startsWith('en-GB'))||voices.find(v=>v.lang.startsWith('en'))||null;
+}
+function utt(text,rate=0.76,pitch=0.88,vol=0.9){
+  const u=new SpeechSynthesisUtterance(text);
+  const v=pickVoice();if(v)u.voice=v;u.rate=rate;u.pitch=pitch;u.volume=vol;u.lang='en-IN';return u;
+}
+function buildNarration(){
+  const deva=document.getElementById('shloka-deva').textContent.trim();
+  const ref=document.getElementById('shloka-ref').textContent.trim();
+  const meaning=document.getElementById('meaning-body').textContent.trim();
+  const insight=document.getElementById('insight-body').textContent.trim();
+  const action=document.getElementById('action-body').textContent.trim();
+  const sank=document.getElementById('sk-text').textContent.trim();
+  const parts=[utt('Om. Take a deep breath. Let this wisdom enter you now.',0.60,0.82)];
+  if(deva){parts.push(utt('The sacred verse.',0.68,0.84));parts.push(utt(deva,0.52,0.80));}
+  if(ref)parts.push(utt('From '+ref,0.70,0.86));
+  parts.push(utt('…',0.28,0.85));
+  if(meaning){parts.push(utt('The meaning.',0.70,0.86));parts.push(utt(meaning,0.76,0.90));}
+  if(insight){parts.push(utt('The deeper insight.',0.66,0.84));parts.push(utt(insight,0.74,0.88));}
+  if(action){parts.push(utt('Your sacred action for today.',0.70,0.86));parts.push(utt(action,0.78,0.92));}
+  if(sank){parts.push(utt('Your personal Sankalpa. Repeat three times.',0.68,0.84));[0.64,0.58,0.54].forEach(r=>parts.push(utt(sank,r,0.82)));}
+  parts.push(utt('Sit with this. Namaste.',0.60,0.80));
+  return parts;
+}
+function toggleVoice(){voiceActive?stopVoice():startVoice();}
+function startVoice(){
+  if(!window.speechSynthesis){showToast('Voice not supported','err');return;}
+  stopVoice();ensureSoundPlaying();
+  const parts=buildNarration();if(!parts.length){showToast('Generate wisdom first','err');return;}
+  voiceActive=true;updateVoiceBtn(true);
+  let idx=0;function next(){if(idx>=parts.length){stopVoice();soundComplete();return;}const u=parts[idx++];u.onend=next;u.onerror=()=>stopVoice();window.speechSynthesis.speak(u);}
+  if(window.speechSynthesis.getVoices().length)next();
+  else{window.speechSynthesis.onvoiceschanged=()=>{window.speechSynthesis.onvoiceschanged=null;next()};}
+}
+function stopVoice(){window.speechSynthesis.cancel();voiceActive=false;updateVoiceBtn(false);}
+function updateVoiceBtn(on){
+  const btn=document.getElementById('voice-btn');if(!btn)return;
+  if(on){btn.classList.add('playing');btn.innerHTML='<svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12"><path d="M5.5 3.5A1.5 1.5 0 0 1 7 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5zm5 0A1.5 1.5 0 0 1 12 5v6a1.5 1.5 0 0 1-3 0V5a1.5 1.5 0 0 1 1.5-1.5z"/></svg> ⏸ Pause';}
+  else{btn.classList.remove('playing');btn.innerHTML='<svg viewBox="0 0 16 16" fill="currentColor" width="12" height="12"><path d="M11.536 14.01A8.473 8.473 0 0 0 14.026 8a8.473 8.473 0 0 0-2.49-6.01l-.708.707A7.476 7.476 0 0 1 13.025 8c0 2.071-.84 3.946-2.197 5.303l.708.707z"/><path d="M10.121 12.596A6.48 6.48 0 0 0 12.025 8a6.48 6.48 0 0 0-1.904-4.596l-.707.707A5.483 5.483 0 0 1 11.025 8a5.483 5.483 0 0 1-1.61 3.89l.706.706z"/><path d="M8.707 11.182A4.486 4.486 0 0 0 10.025 8a4.486 4.486 0 0 0-1.318-3.182L8 5.525A3.489 3.489 0 0 1 9.025 8a3.49 3.49 0 0 1-1.025 2.475l.707.707zM6.717 3.55A.5.5 0 0 1 7 4v8a.5.5 0 0 1-.812.39L3.825 10.5H1.5A.5.5 0 0 1 1 10V6a.5.5 0 0 1 .5-.5h2.325l2.363-1.89a.5.5 0 0 1 .529-.06z"/></svg> 🔊 Listen';}
+}
+function speakSankalpa(){
+  if(!window.speechSynthesis)return;stopVoice();ensureSoundPlaying();
+  const text=document.getElementById('sk-text').textContent.trim();if(!text)return;
+  voiceActive=true;updateVoiceBtn(true);
+  const intro=utt('Your personal Sankalpa. Three times, with full heart.',0.68,0.84);
+  intro.onend=()=>{let c=0;function rep(){if(c>=3){stopVoice();return;}const u=utt(text,0.60-c*.04,0.82);u.onend=()=>{c++;setTimeout(rep,1400);};window.speechSynthesis.speak(u);c++;}rep();};
+  window.speechSynthesis.speak(intro);
+}
+function speakReflectionPrompt(){
+  const p=utt('The day is coming to a close, dear seeker. In the quiet of this evening, reflect: what wisdom touched your heart today? What old burden are you ready to release? Write freely. The cosmos listens.',0.70,0.86);
+  ensureSoundPlaying();window.speechSynthesis.cancel();window.speechSynthesis.speak(p);
+}
+
+/* ══════════════════════════════════════════════════════
+   HEALING YANTRAS (Procedural SVG)
+══════════════════════════════════════════════════════ */
+const YT=[
+  {name:'Sri Yantra',meaning:'Nine interlocking triangles — geometry of creation and manifestation',p:['#E8A030','#F8C050','#FFA050'],draw:dSri},
+  {name:'Lotus Yantra',meaning:'16-petal lotus — infinite compassion and spiritual unfolding',p:['#D06890','#E890B0','#F0B0CC'],draw:dLotus},
+  {name:'Surya Yantra',meaning:'Solar radiance — courage, clarity and life force awakened',p:['#F06820','#FFA050','#F8C050'],draw:dSurya},
+  {name:'Shiva Yantra',meaning:'Pure consciousness — liberation, stillness and eternal freedom',p:['#48B888','#70D0A8','#90E8C0'],draw:dShiva},
+  {name:'Kali Yantra',meaning:'Sacred transformation — releasing what no longer serves',p:['#8868C8','#A888E0','#C0A0F0'],draw:dKali}
+];
+const C2=150,R2=125;
+function pt(a){return a.map(p=>p.join(',')).join(' ');}
+function dSri(svg,p){
+  let s=[];
+  s.push(`<circle cx="${C2}" cy="${C2}" r="${R2}" stroke="${p[0]}" stroke-width="1.2" fill="none" opacity=".65"/>`);
+  s.push(`<circle cx="${C2}" cy="${C2}" r="${R2*.82}" stroke="${p[0]}" stroke-width=".6" fill="none" opacity=".5"/>`);
+  [.80,.68,.56,.44,.32,.22,.14].forEach((sc,i)=>{
+    const r=R2*sc;
+    const up=[[C2,C2-r],[C2+r*.866,C2+r*.5],[C2-r*.866,C2+r*.5]];
+    const dn=[[C2,C2+r],[C2+r*.866,C2-r*.5],[C2-r*.866,C2-r*.5]];
+    s.push(`<polygon points="${pt(up)}" fill="none" stroke="${p[i%3]}" stroke-width="${.8+i*.05}" opacity="${.28+i*.06}"/>`);
+    s.push(`<polygon points="${pt(dn)}" fill="none" stroke="${p[(i+1)%3]}" stroke-width="${.7+i*.04}" opacity="${.22+i*.05}"/>`);
+  });
+  for(let i=0;i<8;i++){const a=(i/8)*Math.PI*2;const px=(C2+Math.cos(a)*R2*.94).toFixed(1);const py=(C2+Math.sin(a)*R2*.94).toFixed(1);s.push(`<ellipse cx="${px}" cy="${py}" rx="10" ry="22" fill="none" stroke="${p[2]}" stroke-width=".5" opacity=".38" transform="rotate(${(a*180/Math.PI+90).toFixed(1)},${px},${py})"/>`);}
+  s.push(`<circle cx="${C2}" cy="${C2}" r="12" fill="${p[1]}" opacity=".22"/>`);s.push(`<circle cx="${C2}" cy="${C2}" r="5.5" fill="${p[0]}" opacity=".9"/>`);
+  svg.innerHTML=s.join('');
+}
+function dLotus(svg,p){
+  let s=[];[R2,R2*.85,R2*.68].forEach((r,i)=>s.push(`<circle cx="${C2}" cy="${C2}" r="${r}" stroke="${p[i%3]}" stroke-width="${1-i*.2}" fill="none" opacity="${.58-i*.1}"/>`));
+  [1,2].forEach(layer=>{const n=8*(layer+1);for(let i=0;i<n;i++){const a=(i/n)*Math.PI*2+(layer*Math.PI/n);const dist=R2*(layer===0?.78:.55);const px=(C2+Math.cos(a)*dist).toFixed(1);const py=(C2+Math.sin(a)*dist).toFixed(1);const rx=layer===0?13:8,ry=layer===0?28:17;const rot=(a*180/Math.PI+90).toFixed(1);const col=p[layer%p.length];s.push(`<ellipse cx="${px}" cy="${py}" rx="${rx}" ry="${ry}" fill="${col}" fill-opacity="${layer===0?.11:.08}" stroke="${col}" stroke-width=".7" opacity="${layer===0?.5:.4}" transform="rotate(${rot},${px},${py})"/>`)}});
+  [[C2,C2-R2*.5],[C2+R2*.43,C2+R2*.25],[C2-R2*.43,C2+R2*.25]].join('|').split('|');
+  const h1=[[C2,C2-R2*.5],[C2+R2*.43,C2+R2*.25],[C2-R2*.43,C2+R2*.25]];const h2=[[C2,C2+R2*.5],[C2+R2*.43,C2-R2*.25],[C2-R2*.43,C2-R2*.25]];
+  [h1,h2].forEach(t=>s.push(`<polygon points="${pt(t)}" fill="none" stroke="${p[0]}" stroke-width=".8" opacity=".38"/>`));
+  s.push(`<circle cx="${C2}" cy="${C2}" r="6" fill="${p[0]}" opacity=".9"/>`);svg.innerHTML=s.join('');
+}
+function dSurya(svg,p){
+  let s=[];for(let i=0;i<12;i++){const a=(i/12)*Math.PI*2;const x1=(C2+Math.cos(a)*R2*.48).toFixed(1);const y1=(C2+Math.sin(a)*R2*.48).toFixed(1);const x2=(C2+Math.cos(a)*R2*.95).toFixed(1);const y2=(C2+Math.sin(a)*R2*.95).toFixed(1);s.push(`<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${p[i%2]}" stroke-width="${i%2===0?1.2:.6}" opacity="${i%2===0?.68:.42}"/>`);}
+  [R2,R2*.8,R2*.62,R2*.44,R2*.28].forEach((r,i)=>s.push(`<circle cx="${C2}" cy="${C2}" r="${r}" stroke="${p[i%3]}" stroke-width="${.8-i*.1}" fill="none" opacity="${.52-i*.07}"/>`));
+  [6,12].forEach((n,li)=>{const rr=R2*(li===0?.7:.52);const pts2=[];for(let i=0;i<n*2;i++){const a=(i/(n*2))*Math.PI*2;const ri=i%2===0?rr:rr*.55;pts2.push(`${(C2+Math.cos(a)*ri).toFixed(1)},${(C2+Math.sin(a)*ri).toFixed(1)}`);}s.push(`<polygon points="${pts2.join(' ')}" fill="${p[0]}" fill-opacity=".06" stroke="${p[li%3]}" stroke-width=".7" opacity=".42"/>`);});
+  s.push(`<circle cx="${C2}" cy="${C2}" r="11" fill="${p[1]}" opacity=".3"/>`);s.push(`<circle cx="${C2}" cy="${C2}" r="5" fill="${p[0]}" opacity=".92"/>`);svg.innerHTML=s.join('');
+}
+function dShiva(svg,p){
+  let s=[];s.push(`<ellipse cx="${C2}" cy="${C2}" rx="${(R2*.44).toFixed(1)}" ry="${(R2*.70).toFixed(1)}" fill="none" stroke="${p[0]}" stroke-width="1" opacity=".52"/>`);s.push(`<ellipse cx="${C2}" cy="${C2}" rx="${(R2*.27).toFixed(1)}" ry="${(R2*.46).toFixed(1)}" fill="none" stroke="${p[1]}" stroke-width=".7" opacity=".42"/>`);
+  for(let i=0;i<3;i++){const a=(i/3)*Math.PI*2;const px=(C2+Math.cos(a)*R2*.58).toFixed(1);const py=(C2+Math.sin(a)*R2*.58).toFixed(1);s.push(`<circle cx="${px}" cy="${py}" r="${(R2*.28).toFixed(1)}" fill="none" stroke="${p[i%3]}" stroke-width=".65" opacity=".36"/>`);}
+  [R2,R2*.82,R2*.64].forEach((r,i)=>s.push(`<circle cx="${C2}" cy="${C2}" r="${r}" stroke="${p[i%3]}" stroke-width="${.85-i*.15}" fill="none" opacity="${.48-i*.08}"${i===2?' stroke-dasharray="4 6"':''}/>`));
+  s.push(`<path d="M ${C2-R2*.22} ${C2-R2*.1} Q ${C2-R2*.36} ${C2-R2*.28} ${C2} ${C2-R2*.34} Q ${C2+R2*.18} ${C2-R2*.28} ${C2+R2*.1} ${C2+R2*.04}" fill="none" stroke="${p[2]}" stroke-width=".8" opacity=".48"/>`);
+  [[C2,C2-R2*.24],[C2-R2*.12,C2-R2*.19],[C2+R2*.12,C2-R2*.19]].forEach(([x,y])=>s.push(`<circle cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3" fill="${p[0]}" opacity=".68"/>`));
+  s.push(`<circle cx="${C2}" cy="${C2}" r="5.5" fill="${p[0]}" opacity=".92"/>`);svg.innerHTML=s.join('');
+}
+function dKali(svg,p){
+  let s=[];for(let i=0;i<5;i++){const sc=1-i*.16,rot=i*20;const up=[[C2,C2-R2*sc],[C2+R2*sc*.866,C2+R2*sc*.5],[C2-R2*sc*.866,C2+R2*sc*.5]];s.push(`<polygon points="${pt(up)}" fill="none" stroke="${p[i%p.length]}" stroke-width="${.85-i*.1}" opacity="${.48+i*.08}" transform="rotate(${rot+180},${C2},${C2})"/>`);s.push(`<polygon points="${pt(up)}" fill="none" stroke="${p[(i+1)%p.length]}" stroke-width="${.65-i*.08}" opacity="${.32+i*.06}" transform="rotate(${rot},${C2},${C2})"/>`);;}
+  [R2,R2*.74,R2*.50,R2*.28].forEach((r,i)=>s.push(`<circle cx="${C2}" cy="${C2}" r="${r}" stroke="${p[i%3]}" stroke-width="${.8-i*.1}" fill="none" opacity="${.44-i*.05}"${i>1?' stroke-dasharray="3 5"':''}/>`));
+  for(let i=0;i<6;i++){const a=(i/6)*Math.PI;s.push(`<line x1="${(C2+Math.cos(a)*R2*.94).toFixed(1)}" y1="${(C2+Math.sin(a)*R2*.94).toFixed(1)}" x2="${(C2-Math.cos(a)*R2*.94).toFixed(1)}" y2="${(C2-Math.sin(a)*R2*.94).toFixed(1)}" stroke="${p[0]}" stroke-width=".3" opacity=".22"/>`);}
+  s.push(`<circle cx="${C2}" cy="${C2}" r="5.5" fill="${p[2]}" opacity=".92"/>`);svg.innerHTML=s.join('');
+}
+function hashStr(s){let h=0;for(let i=0;i<s.length;i++)h=Math.imul(31,h)+s.charCodeAt(i)|0;return Math.abs(h);}
+function renderYantra(q){const yt=YT[hashStr(q)%YT.length];yt.draw(document.getElementById('healing-yantra'),yt.p);document.getElementById('yantra-name').textContent=yt.name;document.getElementById('yantra-meaning').textContent=yt.meaning;document.getElementById('yantra-panel').classList.add('on');}
+
+/* ══════════════════════════════════════════════════════
+   HISTORY
+══════════════════════════════════════════════════════ */
+const queryHist=[];
+function pushHist(q){
+  if(queryHist.includes(q))return;queryHist.unshift(q);if(queryHist.length>5)queryHist.pop();
+  const wrap=document.getElementById('hist-wrap'),list=document.getElementById('hist-list');
+  wrap.style.display='block';list.innerHTML='';
+  queryHist.forEach(h=>{const el=document.createElement('div');el.className='hist-item';el.innerHTML='<div class="hist-dot"></div><span>'+safe(h)+'</span>';el.onclick=()=>{document.getElementById('q').value=h;invoke();};list.appendChild(el);});
+}
+function safe(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function handleKey(e){if((e.ctrlKey||e.metaKey)&&e.key==='Enter'){e.preventDefault();soundClick();invoke();}}
+
+/* ══════════════════════════════════════════════════════
+   STATE
+══════════════════════════════════════════════════════ */
+let STATE={shloka:'',source:'',meaning:'',insight:'',action:'',sankalpa:''};
+let running=false;
+
+/* ══════════════════════════════════════════════════════
+   MAIN INVOKE
+══════════════════════════════════════════════════════ */
+async function invoke(){
+  const q=document.getElementById('q').value.trim();
+  if(!q||running)return;
+  running=true;stopVoice();soundClick();
+
+  const btn=document.getElementById('invoke-btn');
+  const loader=document.getElementById('loader');
+  const vp=document.getElementById('viewport');
+  const art=document.getElementById('art');
+  const actRow=document.getElementById('act-row');
+  const errBox=document.getElementById('err-box');
+  const dash=document.getElementById('dashboard');
+  const dt=document.getElementById('donate-trigger');
+
+  btn.disabled=true;errBox.style.display='none';
+  document.getElementById('sk-card').classList.remove('on');
+  document.getElementById('yantra-panel').classList.remove('on');
+  ['r-shloka','r-meaning','r-insight','r-action'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  actRow.style.display='none';dt.classList.remove('show');
+
+  dash.style.display='none';vp.style.display='flex';art.style.opacity='0';loader.style.display='flex';
+
+  const seed=Math.floor(Math.random()*999991);
+  const imgUrl='https://pollinations.ai/p/'+encodeURIComponent(q+', vedic sacred cosmic art, lotus mandala, golden divine light, india temple, 8k')+'?width=800&height=900&seed='+seed+'&nologo=true&turbo=true';
+
+  const [aiRes,imgRes]=await Promise.allSettled([callAI(q),waitImg(imgUrl)]);
+  loader.style.display='none';
+
+  if(aiRes.status==='fulfilled'&&aiRes.value){
+    const d=aiRes.value;
+    STATE={shloka:(d.shloka||'').trim(),source:(d.source||'').trim(),meaning:(d.meaning||'').trim(),insight:(d.insight||'').trim(),action:(d.action||'').trim(),sankalpa:(d.sankalpa||'').trim()};
+  } else {
+    STATE={shloka:'',source:'',meaning:'',
+      insight:'The cosmos responds in silence today… Your contemplation opens a doorway into Vedic timelessness. The Rishis remind us: the seeker who turns within with sincerity finds Dharma illuminated before them.',
+      action:'Sit in stillness for 5 minutes. Observe breath without control. Let the answer arise from within.',
+      sankalpa:'I am peace. I am presence. I am guided by Dharma.'
+    };
+    if(aiRes.reason){showErr('The cosmos responds in silence today… (showing timeless wisdom)');console.warn(aiRes.reason);}
+  }
+
+  soundArrival();
+  renderYantra(q);
+
+  await showSec('r-shloka',()=>{
+    if(STATE.shloka){document.getElementById('shloka-deva').textContent=STATE.shloka;document.getElementById('shloka-ref').textContent=STATE.source;}
+    else document.getElementById('r-shloka').classList.remove('on');
+  });
+  await dl(160);
+  await showSec('r-meaning',async()=>typeOut(document.getElementById('meaning-body'),STATE.meaning));
+  await dl(100);
+  await showSec('r-insight',async()=>typeOut(document.getElementById('insight-body'),STATE.insight));
+  await dl(100);
+  await showSec('r-action',()=>{
+    document.getElementById('action-body').textContent=STATE.action;
+    const pill=document.getElementById('action-pill');pill.style.display='inline-flex';
+    pill.textContent='🌅 '+STATE.action.slice(0,55)+(STATE.action.length>55?'…':'');
+    document.getElementById('save-btn').classList.remove('saved');document.getElementById('save-count').textContent='';
+  });
+
+  if(STATE.sankalpa){document.getElementById('sk-text').textContent=STATE.sankalpa;document.getElementById('adopt-btn').textContent='🌸 Adopt';document.getElementById('adopt-btn').classList.remove('adopted');document.getElementById('sk-card').classList.add('on');}
+
+  actRow.style.display='flex';
+  if(imgRes.status==='fulfilled'){art.src=imgUrl;requestAnimationFrame(()=>{art.style.opacity='.50';});}
+
+  soundComplete();
+  incrementStreak();pushHist(q);
+
+  // Show donation trigger after value delivery (delayed)
+  setTimeout(()=>dt.classList.add('show'),8000);
+
+  btn.disabled=false;running=false;
+}
+
+async function showSec(id,fn){document.getElementById(id).classList.add('on');await fn();}
+function dl(ms){return new Promise(r=>setTimeout(r,ms));}
+function waitImg(url){return new Promise((ok,fail)=>{const img=new Image();img.onload=()=>ok(url);img.onerror=()=>fail();img.src=url;});}
+
+/* ══════════════════════════════════════════════════════
+   CLAUDE API — GURU-AWARE
+══════════════════════════════════════════════════════ */
+async function callAI(query){
+  const guru=GURU_DATA[currentGuru]||GURU_DATA.krishna;
+  const seeking=getPref('seeking','general wellbeing');
+  const SYS=`${guru.prompt}
+
+The seeker is seeking: ${seeking}.
+
+Respond ONLY with valid JSON. No markdown. No fences. No preamble.
+
+Format:
+{"shloka":"<exact Devanagari Unicode verse — most relevant>","source":"<e.g. Bhagavad Gita 2.47>","meaning":"<plain English, 2 sentences, zero jargon, anyone can understand>","insight":"<3 sentences, 2nd person, poetic, luminous, weave Sanskrit terms naturally>","action":"<1 specific doable action today — concrete not vague>","sankalpa":"<first-person present-tense affirmation, 1 sentence, inspired by the shloka>"}
+
+Rules: shloka=verified Devanagari; meaning=crystal clear; insight=luminous second person; action=specific (e.g. 'Write 3 things you are grateful for before sleeping'); sankalpa=first person present tense. Output ONLY the JSON.`;
+
+  const res=await fetch('https://api.anthropic.com/v1/messages',{
+    method:'POST',headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:900,system:SYS,messages:[{role:'user',content:query}]})
+  });
+  if(!res.ok){const b=await res.text().catch(()=>'');throw new Error('HTTP '+res.status+': '+b);}
+  const data=await res.json();
+  const raw=data.content.filter(b=>b.type==='text').map(b=>b.text).join('');
+  const clean=raw.replace(/^```[\w]*\s*/m,'').replace(/\s*```\s*$/m,'').trim();
+  return JSON.parse(clean);
+}
+
+/* ══════════════════════════════════════════════════════
+   TYPEWRITER
+══════════════════════════════════════════════════════ */
+const SKT_RE=/\b(Atman|Brahman|Dharma|Karma|Moksha|Rta|Sattva|Tamas|Rajas|Prakriti|Purusha|Maya|Ahimsa|Yoga|Jnana|Bhakti|Shakti|Prana|Samadhi|Turiya|Vedanta|Advaita|Sankalpa|Vasanas|Samsara|Chitta|Tat Tvam Asi|Aham Brahmasmi|Sat Chit Ananda|Neti Neti|Nirvana)\b/g;
+function hl(t){return t.replace(SKT_RE,'<strong>$1</strong>');}
+function typeOut(el,text,spd=12){
+  el.innerHTML='';
+  return new Promise(done=>{
+    let i=0;
+    function tick(){
+      if(i<text.length){i++;el.innerHTML=hl(text.slice(0,i))+'<span class="caret" aria-hidden="true"></span>';setTimeout(tick,spd);}
+      else{el.innerHTML=hl(text);done();}
+    }tick();
+  });
+}
+
+/* ══════════════════════════════════════════════════════
+   WISDOM LIBRARY (save/load)
+══════════════════════════════════════════════════════ */
+function saveWisdom(){
+  const q=document.getElementById('q').value.trim();
+  const lib=getPref('library',[]);
+  const entry={id:Date.now(),date:new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}),query:q,shloka:STATE.shloka,source:STATE.source,insight:STATE.insight,action:STATE.action,sankalpa:STATE.sankalpa};
+  lib.unshift(entry);if(lib.length>50)lib.pop();
+  setPref('library',lib);
+  const btn=document.getElementById('save-btn');btn.classList.add('saved');btn.textContent='✅ Saved';
+  document.getElementById('save-count').textContent='('+lib.length+' saved)';
+  showToast('Wisdom saved to your library ❤️','ok');soundComplete();
+}
+function openWisdomLibrary(){
+  const lib=getPref('library',[]);
+  const grid=document.getElementById('wl-grid');
+  if(!lib.length){grid.innerHTML='<div style="text-align:center;padding:30px;color:var(--moon-35);font-style:italic">No saved wisdom yet. Invoke and tap ❤️ Save.</div>';}
+  else{
+    grid.innerHTML=lib.map((e,i)=>`
+      <div class="wl-card">
+        <div class="wl-date">${e.date}</div>
+        <div class="wl-query">"${safe(e.query)}"</div>
+        ${e.shloka?`<div style="font-family:'Noto Serif Devanagari',serif;font-size:18px;color:var(--saf-soft);margin-bottom:6px">${safe(e.shloka)}</div><div style="font-size:12px;color:var(--moon-35);margin-bottom:8px">${safe(e.source)}</div>`:''}
+        <div class="wl-insight">${safe(e.insight)}</div>
+        ${e.action?`<div style="font-size:var(--sm);color:var(--jade);margin-bottom:8px">🎯 ${safe(e.action)}</div>`:''}
+        <div class="wl-acts">
+          <button class="wl-btn" onclick="reuseWisdom(${i})">↩ Revisit</button>
+          <button class="wl-btn" onclick="copyLibEntry(${i})">Copy</button>
+          <button class="wl-btn" onclick="deleteEntry(${i})" style="color:var(--saffron)">✕</button>
+        </div>
+      </div>`).join('');
+  }
+  openModal('wl-modal');
+}
+function reuseWisdom(i){const lib=getPref('library',[]);const e=lib[i];if(e){document.getElementById('q').value=e.query;closeModal('wl-modal');invoke();}}
+async function copyLibEntry(i){const lib=getPref('library',[]);const e=lib[i];if(!e)return;const text=[e.shloka,e.source?'— '+e.source:'',e.insight,e.action?'Action: '+e.action:'','— BODHA · Neural Wisdom'].filter(Boolean).join('\n');try{await navigator.clipboard.writeText(text);}catch{}showToast('Entry copied','ok');}
+function deleteEntry(i){const lib=getPref('library',[]);lib.splice(i,1);setPref('library',lib);openWisdomLibrary();}
+function clearLibrary(){if(confirm('Clear all saved wisdom?')){setPref('library',[]);openWisdomLibrary();}}
+
+/* ══════════════════════════════════════════════════════
+   SHARE AS IMAGE (Canvas API)
+══════════════════════════════════════════════════════ */
+let shareBlob=null;
+function openShareImage(){
+  openModal('share-modal');
+  document.getElementById('share-gen-msg').textContent='Generating your wisdom card…';
+  document.getElementById('share-preview').style.display='none';
+  document.getElementById('dl-btn').style.display='none';
+  setTimeout(generateShareImage,300);
+}
+async function generateShareImage(){
+  const canvas=document.getElementById('share-canvas');
+  canvas.width=1080;canvas.height=1080;
+  const ctx=canvas.getContext('2d');
+
+  // Background
+  const bg=ctx.createRadialGradient(540,540,0,540,540,850);
+  bg.addColorStop(0,'#1E1610');bg.addColorStop(1,'#0C0804');
+  ctx.fillStyle=bg;ctx.fillRect(0,0,1080,1080);
+
+  // Decorative border
+  ctx.strokeStyle='rgba(232,160,48,0.35)';ctx.lineWidth=2;ctx.strokeRect(28,28,1024,1024);
+  ctx.strokeStyle='rgba(232,160,48,0.15)';ctx.lineWidth=1;ctx.strokeRect(38,38,1004,1004);
+
+  // Concentric circles (yantra echo)
+  ctx.strokeStyle='rgba(232,160,48,0.08)';ctx.lineWidth=1;
+  [300,240,180,120,60].forEach(r=>{ctx.beginPath();ctx.arc(540,540,r,0,Math.PI*2);ctx.stroke();});
+
+  // Shloka
+  await document.fonts.ready;
+  if(STATE.shloka){
+    ctx.fillStyle='#FFA050';ctx.textAlign='center';
+    ctx.font='500 44px "Noto Serif Devanagari", serif';
+    wrapCanvasText(ctx,STATE.shloka,540,200,940,60);
+    ctx.fillStyle='rgba(245,237,213,0.4)';ctx.font='22px "DM Sans", sans-serif';
+    if(STATE.source)ctx.fillText('— '+STATE.source,540,ctx._lastY+35||330);
+  }
+
+  // Divider
+  ctx.strokeStyle='rgba(232,160,48,0.3)';ctx.lineWidth=1;
+  const dy=STATE.shloka?ctx._lastY+60:200;
+  ctx.beginPath();ctx.moveTo(200,dy);ctx.lineTo(880,dy);ctx.stroke();
+
+  // Insight
+  ctx.fillStyle='rgba(245,237,213,0.82)';ctx.textAlign='center';
+  ctx.font='italic 34px "Cormorant Garamond", Georgia, serif';
+  const insightStart=dy+50;
+  wrapCanvasText(ctx,STATE.insight||'Your wisdom awaits…',540,insightStart,900,52);
+
+  // Action pill
+  if(STATE.action){
+    const ay=Math.min(ctx._lastY+60,880);
+    ctx.fillStyle='rgba(208,104,144,0.15)';roundRect(ctx,240,ay-32,600,52,26);ctx.fill();
+    ctx.strokeStyle='rgba(208,104,144,0.5)';ctx.lineWidth=1;roundRect(ctx,240,ay-32,600,52,26);ctx.stroke();
+    ctx.fillStyle='#D06890';ctx.font='500 22px "DM Sans", sans-serif';ctx.textAlign='center';
+    ctx.fillText('🎯 '+STATE.action.slice(0,55)+(STATE.action.length>55?'…':''),540,ay+8);
+  }
+
+  // BODHA branding
+  ctx.fillStyle='rgba(232,160,48,0.75)';ctx.font='700 32px "Cinzel Decorative", serif';ctx.textAlign='center';ctx.fillText('BODHA',540,990);
+  ctx.fillStyle='rgba(245,237,213,0.35)';ctx.font='18px "DM Sans", sans-serif';ctx.fillText('Find Clarity. Live with Dharma.',540,1018);
+
+  // Show preview
+  const preview=document.getElementById('share-preview');
+  preview.src=canvas.toDataURL('image/png');preview.style.display='block';
+  document.getElementById('share-gen-msg').textContent='Your wisdom card is ready to share!';
+  document.getElementById('dl-btn').style.display='inline-flex';
+}
+function wrapCanvasText(ctx,text,x,y,maxW,lineH){
+  const words=text.split(' ');let line='';let cy=y;
+  words.forEach((w,i)=>{const test=line+w+' ';const metrics=ctx.measureText(test);if(metrics.width>maxW&&i>0){ctx.fillText(line,x,cy);line=w+' ';cy+=lineH;}else{line=test;}});
+  ctx.fillText(line,x,cy);ctx._lastY=cy;
+}
+function roundRect(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r,y);ctx.quadraticCurveTo(x+w,y,x+w,y+r);ctx.lineTo(x+w,y+h-r);ctx.quadraticCurveTo(x+w,y+h,x+w-r,y+h);ctx.lineTo(x+r,y+h);ctx.quadraticCurveTo(x,y+h,x,y+h-r);ctx.lineTo(x,y+r);ctx.quadraticCurveTo(x,y,x+r,y);ctx.closePath();}
+function downloadShareImage(){
+  const canvas=document.getElementById('share-canvas');
+  const a=document.createElement('a');a.download='bodha-wisdom-'+(Date.now())+'.png';a.href=canvas.toDataURL('image/png');a.click();
+  showToast('Wisdom card downloaded! 📱','ok');
+}
+
+/* ══════════════════════════════════════════════════════
+   NIGHT REFLECTION
+══════════════════════════════════════════════════════ */
+function checkNightPrompt(){
+  const h=new Date().getHours();
+  const dismissed=getPref('night_dismissed',null);
+  const today=new Date().toDateString();
+  if(h>=19&&h<24&&dismissed!==today){document.getElementById('night-bar').classList.add('show');}
+}
+function dismissNight(){document.getElementById('night-bar').classList.remove('show');setPref('night_dismissed',new Date().toDateString());}
+function openNightReflect(){dismissNight();openModal('reflect-modal');}
+function saveReflection(){
+  const text=document.getElementById('reflect-ta').value.trim();if(!text){showToast('Please write something first','err');return;}
+  const refs=getPref('reflections',[]);
+  refs.unshift({date:new Date().toLocaleDateString('en-IN'),text});
+  if(refs.length>100)refs.pop();setPref('reflections',refs);
+  showToast('Reflection saved. Rest in peace tonight. 🌙','ok');soundComplete();closeModal('reflect-modal');
+}
+
+/* ══════════════════════════════════════════════════════
+   YT SCRIPT
+══════════════════════════════════════════════════════ */
+function openYTModal(){
+  openModal('yt-modal');
+  const out=document.getElementById('script-out');
+  if(!STATE.insight)out.textContent='Generate wisdom first.';
+  else out.textContent='Click "Generate Script" to create your YouTube video script.';
+}
+async function generateScript(){
+  if(!STATE.insight){showToast('Generate wisdom first!','err');return;}
+  const out=document.getElementById('script-out');const btn=document.getElementById('gen-btn');
+  btn.disabled=true;out.className='script-out loading';out.textContent='Channelling your script…';
+  const SYS=`You are a spiritual YouTube content creator with 5M+ subscribers. Write an engaging 4-5 min video script.
+Format with these exact sections:
+🎬 HOOK (10 sec): [Stop-scroll opener — question or bold statement]
+🌟 INTRO (30 sec): [Theme promise and personal connection]
+🪔 SHLOKA & MEANING: [Recite reverently, explain simply]  
+💭 THE STORY (1-2 min): [Relatable modern-day story connecting to the wisdom]
+✨ DEEP INSIGHT (2 min): [The core teaching in your words]
+🎯 ACTION (30 sec): [Practical takeaway they can do today]
+📺 CTA: [Subscribe, comment what they seek, share]
+Make it warm, personal, spiritually authentic. No generic AI phrases.`;
+  try{
+    const res=await fetch('https://api.anthropic.com/v1/messages',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({model:'claude-sonnet-4-5',max_tokens:1400,system:SYS,messages:[{role:'user',content:`Query: "${document.getElementById('q').value}"\nShloka: ${STATE.shloka}\nSource: ${STATE.source}\nMeaning: ${STATE.meaning}\nInsight: ${STATE.insight}\nAction: ${STATE.action}`}]})});
+    const d=await res.json();
+    const sc=d.content.filter(b=>b.type==='text').map(b=>b.text).join('');
+    out.className='script-out';out.textContent=sc;soundComplete();
+  }catch(err){out.className='script-out';out.textContent='Error: '+err.message;}
+  btn.disabled=false;
+}
+async function copyScript(){try{await navigator.clipboard.writeText(document.getElementById('script-out').textContent);}catch{}showToast('Script copied! 🎬','ok');}
+function readScript(){
+  const text=document.getElementById('script-out').textContent;
+  if(!text||text.includes('Generate wisdom'))return;
+  ensureSoundPlaying();const u=utt(text,.88,.92);window.speechSynthesis.cancel();window.speechSynthesis.speak(u);showToast('Reading script…');
+}
+
+/* ══════════════════════════════════════════════════════
+   SANKALPA
+══════════════════════════════════════════════════════ */
+function adoptSankalpa(){
+  const btn=document.getElementById('adopt-btn');btn.textContent='✅ Adopted';btn.classList.add('adopted');
+  setPref('active_sankalpa',STATE.sankalpa);showToast('Sankalpa adopted. Carry it in your heart 🙏','ok');soundComplete();
+}
+async function copySankalpa(){try{await navigator.clipboard.writeText(STATE.sankalpa);}catch{}showToast('Sankalpa copied','ok');}
+
+/* ══════════════════════════════════════════════════════
+   DONATION
+══════════════════════════════════════════════════════ */
+const UPI='bodha@upi';
+function openDonate(){openModal('donate-modal');}
+async function copyUPI(){try{await navigator.clipboard.writeText(UPI);}catch{}showToast('"'+UPI+'" copied 🙏','ok');}
+function openAbout(){openModal('about-modal');}
+
+/* ══════════════════════════════════════════════════════
+   ACTION BUTTONS
+══════════════════════════════════════════════════════ */
+async function doCopy(){
+  const lines=[];
+  if(STATE.shloka){lines.push(STATE.shloka,'— '+STATE.source,'');}
+  if(STATE.meaning)lines.push('Meaning: '+STATE.meaning,'');
+  lines.push('Insight: '+STATE.insight,'');
+  if(STATE.action)lines.push('Action: '+STATE.action,'');
+  if(STATE.sankalpa)lines.push('Sankalpa: '+STATE.sankalpa,'');
+  lines.push('— BODHA · Find Clarity. Live with Dharma. · bodha.ai');
+  const text=lines.join('\n');
+  try{await navigator.clipboard.writeText(text);}catch{const ta=document.createElement('textarea');ta.value=text;ta.style.cssText='position:fixed;top:-9999px;opacity:0';document.body.appendChild(ta);ta.select();try{document.execCommand('copy');}catch{}document.body.removeChild(ta);}
+  showToast('Full wisdom copied ✨','ok');
+}
+function doNew(){
+  stopVoice();
+  document.getElementById('q').value='';
+  ['r-shloka','r-meaning','r-insight','r-action'].forEach(id=>document.getElementById(id).classList.remove('on'));
+  document.getElementById('sk-card').classList.remove('on');document.getElementById('yantra-panel').classList.remove('on');
+  document.getElementById('act-row').style.display='none';document.getElementById('err-box').style.display='none';
+  document.getElementById('donate-trigger').classList.remove('show');
+  document.getElementById('viewport').style.display='none';document.getElementById('dashboard').style.display='block';
+  document.getElementById('art').style.opacity='0';document.getElementById('q').focus();
+}
+async function doShare(){
+  const lines=[];
+  if(STATE.shloka){lines.push(STATE.shloka,'— '+STATE.source,'');}
+  lines.push(STATE.insight,'');
+  if(STATE.sankalpa)lines.push('Sankalpa: '+STATE.sankalpa,'');
+  lines.push('— BODHA · Find Clarity. Live with Dharma.');
+  const text=lines.join('\n');
+  if(navigator.share){try{await navigator.share({title:'BODHA · Vedic Wisdom',text});return;}catch{}}
+  try{await navigator.clipboard.writeText(text);}catch{}showToast('Wisdom copied for sharing ✨','ok');
+}
+
+/* ══════════════════════════════════════════════════════
+   MODAL HELPERS
+══════════════════════════════════════════════════════ */
+function openModal(id){document.getElementById(id).classList.add('on');}
+function closeModal(id,e){if(!e||e.target===document.getElementById(id))document.getElementById(id).classList.remove('on');}
+
+/* ══════════════════════════════════════════════════════
+   ERROR + TOAST
+══════════════════════════════════════════════════════ */
+function showErr(msg){const el=document.getElementById('err-box');el.textContent='🌟 '+msg;el.style.display='block';}
+let toastT;
+function showToast(msg,type=''){
+  const t=document.getElementById('toast');t.textContent=msg;t.className='toast '+(type||'');
+  clearTimeout(toastT);requestAnimationFrame(()=>{t.classList.add('show');toastT=setTimeout(()=>t.classList.remove('show'),3400);});
+}
+
+/* ══════════════════════════════════════════════════════
+   INIT
+══════════════════════════════════════════════════════ */
+checkOnboard();
+initDashboard();
+buildChips();
+</script>
+</body>
+</html>
